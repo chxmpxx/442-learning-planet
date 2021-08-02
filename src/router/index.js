@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Math from '../views/Math.vue'
 import Sci from '../views/Sci.vue'
+import Leaderboard from '../views/Leaderboard'
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
     name: 'Sci',
     component: Sci
   },
+  {
+    path: 'board',
+    name: 'Leaderboard',
+    component: Leaderboard
+  }
 ]
 
 const router = new VueRouter({
