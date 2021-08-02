@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>Leaderboard</h1>
         <leader-table></leader-table>
     </div>
 </template>

@@ -1,60 +1,63 @@
 <template>
-    <div class="container">
-        <div>
-            <h2>EARN BOARD</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>total Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(member, index) in sortedArry_get" :key="index">
-                        <td>{{ index+1 }}</td>
-                        <td>{{ member.username }}</td>
-                        <td>{{ member.point }}</td>
-
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="select_time">
-            <h2 style="margin:10px 0px;">Time Select</h2>
+    <div>
+        <h1>Leaderboard</h1>
+        <div class="container">
             <div>
-                <div style="margin-bottom: 10px">
-                    <label for="text">Between</label>
-                </div>
-                <div style="margin-bottom: 10px">
-                    <input type="date" v-model="date.first">
-                </div>
-                <div style="margin-bottom: 10px">
-                    <input type="date" v-model="date.second">
+                <h2>EARN BOARD</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>total Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(member, index) in sortedArry_get" :key="index">
+                            <td>{{ index+1 }}</td>
+                            <td>{{ member.username }}</td>
+                            <td>{{ member.point }}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="select_time">
+                <h2 style="margin:10px 0px;">Time Select</h2>
+                <div>
+                    <div style="margin-bottom: 10px">
+                        <label for="text">Between</label>
+                    </div>
+                    <div style="margin-bottom: 10px">
+                        <input type="date" v-model="date.first">
+                    </div>
+                    <div style="margin-bottom: 10px">
+                        <input type="date" v-model="date.second">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div>
-            <h2>USE BOARD</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>total Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(member, index) in sortedArry_use" :key="index">
-                        <td>{{ index+1 }}</td>
-                        <td>{{ member.username }}</td>
-                        <td>{{ member.point }}</td>
+            <div>
+                <h2>USE BOARD</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>total Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(member, index) in sortedArry_use" :key="index">
+                            <td>{{ index+1 }}</td>
+                            <td>{{ member.username }}</td>
+                            <td>{{ member.point }}</td>
 
-                    </tr>
-                </tbody>
-            </table>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </template>
