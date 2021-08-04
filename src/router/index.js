@@ -9,6 +9,7 @@ import Register from "../views/auth/Register.vue";
 import Logout from "../views/auth/Logout.vue";
 import ExchangeRewards from "../views/ExchangeRewards.vue";
 import History from "../views/History.vue";
+import MQuiz1 from "../views/MQuiz1.vue";
 
 Vue.use(VueRouter);
 
@@ -58,6 +59,11 @@ const routes = [
     path: "/history",
     name: "History",
     component: History,
+  },
+  {
+    path: "/math/01",
+    name: "MQuiz1",
+    component: MQuiz1,
   },
 ];
 
