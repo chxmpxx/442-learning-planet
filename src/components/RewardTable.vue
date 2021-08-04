@@ -1,10 +1,12 @@
 <template>
-  <div class="show">
+  <div class="show1">
     <div v-for="reward in rewards" :key="reward.id">
       <div>
         <img v-bind:src="reward.image" alt="reward.name" class="img" />
         <div>{{ reward.name }}</div>
         <div>{{ reward.point }} points</div>
+        <div>Stock : {{ reward.amount }}</div>
+        <button>Exchange</button>
       </div>
     </div>
   </div>
@@ -32,13 +34,14 @@ export default {
 </script>
 
 <style>
-.show {
+.show1 {
   padding-top: 80px;
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;
 }
-.show > div {
+.show1 > div {
   width: 20%;
 }
 .img {

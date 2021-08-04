@@ -13,8 +13,9 @@
 
         <ul class="nav navbar-nav navbar-right">
           <!-- <li class="active"><a href="#">Home</a></li> -->
-          <li><a href="http://localhost:8080/exchange_rewards">Reward</a></li>
+          <li><a href="http://localhost:8080/rewards">Reward</a></li>
           <li><a href="http://localhost:8080/board">Leaderboard</a></li>
+          <li><a href="http://localhost:8080/history">History</a></li>
           <li><a href="http://localhost:8080/logout">Logout</a></li>
         </ul>
       </div>

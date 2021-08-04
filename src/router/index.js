@@ -8,6 +8,7 @@ import Login from "../views/auth/Login.vue";
 import Register from "../views/auth/Register.vue";
 import Logout from "../views/auth/Logout.vue";
 import ExchangeRewards from "../views/ExchangeRewards.vue";
+import History from "../views/History.vue";
 
 Vue.use(VueRouter);
 
@@ -32,11 +33,7 @@ const routes = [
     name: "Logout",
     component: Logout,
   },
-  {
-    path: "/home",
-    name: "Home",
-    component: Home,
-  },
+
   {
     path: "/math",
     name: "Math",
@@ -48,7 +45,7 @@ const routes = [
     component: Sci,
   },
   {
-    path: "/exchange_rewards",
+    path: "/rewards",
     name: "ExchangeRewards",
     component: ExchangeRewards,
   },
@@ -56,6 +53,11 @@ const routes = [
     path: "/board",
     name: "Leaderboard",
     component: Leaderboard,
+  },
+  {
+    path: "/history",
+    name: "History",
+    component: History,
   },
 ];
 
