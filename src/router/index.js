@@ -8,6 +8,7 @@ import Login from "../views/auth/Login.vue";
 import Register from "../views/auth/Register.vue";
 import Logout from "../views/auth/Logout.vue";
 import ExchangeRewards from "../views/ExchangeRewards.vue";
+import MQuiz1 from "../views/MQuiz1.vue";
 
 Vue.use(VueRouter);
 
@@ -56,6 +57,11 @@ const routes = [
     path: "/board",
     name: "Leaderboard",
     component: Leaderboard,
+  },
+  {
+    path: '/math/01',
+    name: 'MQuiz1',
+    component: MQuiz1
   },
 ];
 
