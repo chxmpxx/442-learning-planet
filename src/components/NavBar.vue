@@ -3,18 +3,18 @@
     <nav class="navbar navbar-custom" style="z-index: 1">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="http://localhost:8080/"
+          <a class="navbar-brand" href="http://localhost:8080/home"
             ><img src="../assets/logo.png" class="logo"
           /></a>
-          <a class="navbar-name" href="http://localhost:8080/"
+          <a class="navbar-name" href="http://localhost:8080/home"
             >Learning Planet</a
           >
         </div>
 
         <ul class="nav navbar-nav navbar-right">
           <!-- <li class="active"><a href="#">Home</a></li> -->
-          <li><a href="#">Reward</a></li>
-          <li><a href="#">Leaderboard</a></li>
+          <li><a href="http://localhost:8080/exchange_rewards">Reward</a></li>
+          <li><a href="http://localhost:8080/board">Leaderboard</a></li>
           <li><a href="http://localhost:8080/logout">Logout</a></li>
         </ul>
       </div>

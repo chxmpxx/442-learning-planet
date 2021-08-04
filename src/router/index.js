@@ -7,6 +7,7 @@ import Leaderboard from "../views/Leaderboard";
 import Login from "../views/auth/Login.vue";
 import Register from "../views/auth/Register.vue";
 import Logout from "../views/auth/Logout.vue";
+import ExchangeRewards from "../views/ExchangeRewards.vue";
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,11 @@ const routes = [
     path: "/sci",
     name: "Sci",
     component: Sci,
+  },
+  {
+    path: "/exchange_rewards",
+    name: "ExchangeRewards",
+    component: ExchangeRewards,
   },
   {
     path: "/board",
