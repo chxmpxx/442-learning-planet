@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
-let api_endpoint = process.env.ENDPOINT || "http://localhost:3031"
+let api_endpoint = process.env.VUE_APP_ENDPOINT || "http://localhost:3003"
 
 Vue.use(Vuex)
 
@@ -20,7 +20,7 @@ export default new Vuex.Store({
     },
     actions: {
         async fetchMember ({ commit }) {
-            let res = await axios.get(api_endpoint + "/accounts?role=user")
+            let res = await axios.get(api_endpoint + "/users?role.id=1")
             commit('fetch', {res} )
         }
     },

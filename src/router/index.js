@@ -24,7 +24,7 @@ const routes = [
     component: Sci
   },
   {
-    path: 'board',
+    path: '/board',
     name: 'Leaderboard',
     component: Leaderboard
   }
