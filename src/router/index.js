@@ -1,39 +1,62 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Math from '../views/Math.vue'
-import Sci from '../views/Sci.vue'
-import Leaderboard from '../views/Leaderboard'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
+import Math from "../views/Math.vue";
+import Sci from "../views/Sci.vue";
+import Leaderboard from "../views/Leaderboard";
+import Login from "../views/auth/Login.vue";
+import Register from "../views/auth/Register.vue";
+import Logout from "../views/auth/Logout.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    name: "Login",
+    component: Login,
   },
   {
-    path: '/math',
-    name: 'Math',
-    component: Math
+    path: "/register",
+    name: "Register",
+    component: Register,
   },
   {
-    path: '/sci',
-    name: 'Sci',
-    component: Sci
+    path: "/home",
+    name: "Home",
+    component: Home,
   },
   {
-    path: '/board',
-    name: 'Leaderboard',
-    component: Leaderboard
-  }
-]
+    path: "/logout",
+    name: "Logout",
+    component: Logout,
+  },
+  {
+    path: "/home",
+    name: "Home",
+    component: Home,
+  },
+  {
+    path: "/math",
+    name: "Math",
+    component: Math,
+  },
+  {
+    path: "/sci",
+    name: "Sci",
+    component: Sci,
+  },
+  {
+    path: "/board",
+    name: "Leaderboard",
+    component: Leaderboard,
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

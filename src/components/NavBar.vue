@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-custom" style="z-index: 1;">
+    <nav class="navbar navbar-custom" style="z-index: 1">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="http://localhost:8080/"
@@ -15,6 +15,7 @@
           <!-- <li class="active"><a href="#">Home</a></li> -->
           <li><a href="#">Reward</a></li>
           <li><a href="#">Leaderboard</a></li>
+          <li><a href="http://localhost:8080/logout">Logout</a></li>
         </ul>
       </div>
     </nav>
@@ -79,7 +80,7 @@ body {
   right: 20px;
 }
 
-.navbar-brand{
+.navbar-brand {
   margin-top: 0.4em;
 }
 
