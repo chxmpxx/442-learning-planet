@@ -2,32 +2,45 @@
   <div class="sciplanet">
     <div class="star">
       <div>
-        <img 
-          class="star2" 
-          src="../assets/star/star2b.png" 
-          alt="star2" width="15%" title="ดาวน้ำฟ้าและดาวสุริยะ">
-        <img 
-          class="star4" 
-          src="../assets/star/star4b.png" 
-          alt="star4" width="15%" title="ดาวบรรยากาศ">
-        <img 
-          class="star6" 
-          src="../assets/star/star6b.png" 
-          alt="star6" width="15%" title="ดาวเอกภพ">
+        <a href="http://localhost:8080/sci/02">
+          <img 
+            class="star2" 
+            src="../assets/star/star2b.png" 
+            alt="star2" width="15%" title="ดาวน้ำฟ้าและดาวสุริยะ">
+        </a>
+        <a href="http://localhost:8080/sci/04">
+          <img 
+            class="star4" 
+            src="../assets/star/star4b.png" 
+            alt="star4" width="15%" title="ดาวบรรยากาศ">
+        </a>
+        <a href="http://localhost:8080/sci/06">
+          <img 
+            class="star6" 
+            src="../assets/star/star6b.png" 
+            alt="star6" width="15%" title="ดาวเอกภพ">
+        </a>
+          
       </div>
       <div>
-        <img 
-          class="star1" 
-          src="../assets/star/star1a.png" 
-          alt="star1" width="15%" title="ดาวระบบสุริยะ">
-        <img 
-          class="star3" 
-          src="../assets/star/star3b.png" 
-          alt="star3" width="15%" title="ดาวเคราะห์ในระบบสุริยะ">
-        <img 
-          class="star5" 
-          src="../assets/star/star5b.png" 
-          alt="star5" width="15%" title="ดาวแสง">
+        <a href="http://localhost:8080/sci/01">
+          <img 
+            class="star1" 
+            src="../assets/star/star1a.png" 
+            alt="star1" width="15%" title="ดาวระบบสุริยะ">
+        </a>
+        <a href="http://localhost:8080/sci/03">
+          <img 
+            class="star3" 
+            src="../assets/star/star3b.png" 
+            alt="star3" width="15%" title="ดาวโลกและการเปลี่ยนแปลง">
+        </a>
+        <a href="http://localhost:8080/sci/05">
+          <img 
+            class="star5" 
+            src="../assets/star/star5b.png" 
+            alt="star5" width="15%" title="ดาวแสง">
+        </a>
       </div>
     </div>
     <div class="textinfo">

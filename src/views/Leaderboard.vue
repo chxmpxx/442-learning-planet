@@ -1,21 +1,19 @@
 <template>
-    <div>
-        <leader-table></leader-table>
-    </div>
+  <div>
+    <Navbar />
+    <LeaderTable />
+  </div>
 </template>
 
 <script>
-import LeaderTable from '../components/LeaderTable.vue'
+import LeaderTable from "../components/LeaderTable.vue";
+import Navbar from "../components/NavBar.vue";
 export default {
-    components:{
-        LeaderTable
-    }
-}
+  components: {
+    LeaderTable,
+    Navbar,
+  },
+};
 </script>
 
-<style>
-    h1{
-        color: gold;
-        margin-top: 30px;
-    }
-</style>
+<style lang="scss" scoped></style>

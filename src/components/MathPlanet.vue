@@ -2,24 +2,32 @@
   <div class="mathplanet">
     <div class="star">
       <div>
-        <img 
-          class="star2" 
-          src="../assets/star/star2b.png" 
-          alt="star2" width="15%" title="ดาวเศษส่วนและทศนิยม">
-        <img 
-          class="star4" 
-          src="../assets/star/star4b.png" 
-          alt="star4" width="15%" title="ดาวเรขาคณิต">
+        <a href="http://localhost:8080/math/02">
+          <img 
+            class="star2" 
+            src="../assets/star/star2b.png" 
+            alt="star2" width="15%" title="ดาวเศษส่วนทศนิยม">
+        </a>
+        <a href="http://localhost:8080/math/04">
+          <img 
+            class="star4" 
+            src="../assets/star/star4b.png" 
+            alt="star4" width="15%" title="ดาวเรขาคณิต">
+        </a>
       </div>
       <div>
-        <img 
-          class="star1" 
-          src="../assets/star/star1a.png" 
-          alt="star1" width="15%" title="ดาวบวกลบคูณหาร">
-        <img 
-          class="star3" 
-          src="../assets/star/star3b.png" 
-          alt="star3" width="15%" title="ดาวร้อยละ">
+        <a href="http://localhost:8080/math/01">
+          <img 
+            class="star1" 
+            src="../assets/star/star1a.png" 
+            alt="star1" width="15%" title="ดาวบวกลบคูณหารทั่วไป">
+        </a>
+        <a href="http://localhost:8080/math/03">
+          <img 
+            class="star3" 
+            src="../assets/star/star3b.png" 
+            alt="star3" width="15%" title="ดาวจำนวนร้อยละ">
+        </a>
       </div>
     </div>
     <div class="textinfo">

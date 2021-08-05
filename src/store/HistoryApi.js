@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import Axios from "axios";
-// import AuthService from "@/services/AuthService";
 
 let api_endpoint = process.env.VUE_APP_USER_ENDPOINT || "http://localhost:1337";
 
@@ -12,7 +11,7 @@ export default new Vuex.Store({
     data: [],
   },
   getters: {
-    rewards: (state) => state.data,
+    histories: (state) => state.data,
   },
   mutations: {
     fetch(state, { res }) {
@@ -23,12 +22,11 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async fetchReward({ commit }) {
-      // let headers = AuthService.getApiHeader;
-      let res = await Axios.get(api_endpoint + "/rewards");
+    async fetchHistory({ commit }) {
+      let res = await Axios.get(api_endpoint + "/histories");
       commit("fetch", { res });
     },
-    addReward({ commit }, payload) {
+    addHistory({ commit }, payload) {
       commit("add", { payload });
     },
   },
