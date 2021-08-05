@@ -3,21 +3,19 @@
     <nav class="navbar navbar-custom" style="z-index: 1">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" @click="click('Home')"
+          <a class="navbar-brand" @click="click('/home')"
             ><img src="../assets/logo.png" class="logo"
           /></a>
-          <a class="navbar-name" @click="click('Home')"
-            >Learning Planet</a
-          >
+          <a class="navbar-name" @click="click('/home')">Learning Planet</a>
         </div>
 
         <ul class="nav navbar-nav navbar-right">
           <!-- <li class="active"><a href="#">Home</a></li> -->
-          <li><a @click="click('ExchangeRewards')">Reward</a></li>
-          <li><a @click="click('Leaderboard')">Leaderboard</a></li>
-          <li><a @click="click('History')">History</a></li>
-          <li><a @click="click('Wait')">Wait</a></li>
-          <li><a @click="click('Login')">Logout</a></li>
+          <li><a @click="click('/rewards')">Reward</a></li>
+          <li><a @click="click('/leaderboard')">Leaderboard</a></li>
+          <li><a @click="click('/history')">History</a></li>
+          <li><a @click="click('/wait')">Wait</a></li>
+          <li><a @click="click('/')">Logout</a></li>
         </ul>
       </div>
     </nav>
@@ -26,12 +24,11 @@
 
 <script>
 export default {
-  methods:{
-    click(path){
-      this.$router.push({name: path})
-    }
-    
-  }
+  methods: {
+    click(path) {
+      this.$router.push({ path: path });
+    },
+  },
 };
 </script>
 

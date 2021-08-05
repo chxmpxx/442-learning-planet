@@ -56,7 +56,7 @@ const routes = [
     component: ExchangeRewards,
   },
   {
-    path: "/board",
+    path: "/leaderboard",
     name: "Leaderboard",
     component: Leaderboard,
   },
