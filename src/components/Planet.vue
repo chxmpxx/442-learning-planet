@@ -73,7 +73,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    clickM(path){
+      this.$router.push({name: 'Maths', params:{path: path}})
+    },
+    clickS(path){
+      this.$router.push({name: 'Sci', params: {path:path}})
+    },
+    clickX(path){
+      this.$router.push({name: 'Extra'})
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

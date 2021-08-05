@@ -1,13 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Math from "../views/Math.vue";
+import Maths from "../views/Math.vue";
 import Sci from "../views/Sci.vue";
 import Leaderboard from "../views/Leaderboard";
 import Login from "../views/auth/Login.vue";
 import Register from "../views/auth/Register.vue";
 import Logout from "../views/auth/Logout.vue";
 import ExchangeRewards from "../views/ExchangeRewards.vue";
+import Question from '../views/question/Question'
+import QuestionTable from "../views/question/QuestionTable"
 
 Vue.use(VueRouter);
 
@@ -38,12 +40,12 @@ const routes = [
     component: Home,
   },
   {
-    path: "/math",
-    name: "Math",
-    component: Math,
+    path: "/:path",
+    name: "Maths",
+    component: Maths,
   },
   {
-    path: "/sci",
+    path: "/:path",
     name: "Sci",
     component: Sci,
   },
@@ -57,6 +59,16 @@ const routes = [
     name: "Leaderboard",
     component: Leaderboard,
   },
+  {
+    path: '/:path/:type',
+    name: 'QuestionTable',
+    component: QuestionTable
+  },
+  {
+    path: '/:path/:type/:id',
+    name: 'Question',
+    component: Question
+  }
 ];
 
 const router = new VueRouter({
