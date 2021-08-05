@@ -1,15 +1,17 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Math from "../views/Math.vue";
+import Maths from "../views/Math.vue";
 import Sci from "../views/Sci.vue";
 import Leaderboard from "../views/Leaderboard";
 import Login from "../views/auth/Login.vue";
 import Register from "../views/auth/Register.vue";
 import Logout from "../views/auth/Logout.vue";
 import ExchangeRewards from "../views/ExchangeRewards.vue";
+import Question from '../views/question/Question'
+import QuestionTable from "../views/question/QuestionTable"
 import History from "../views/History.vue";
-import MQuiz1 from "../views/MQuiz1.vue";
+
 
 Vue.use(VueRouter);
 
@@ -34,14 +36,13 @@ const routes = [
     name: "Logout",
     component: Logout,
   },
-
   {
-    path: "/math",
-    name: "Math",
-    component: Math,
+    path: "/planet/:path",
+    name: "Maths",
+    component: Maths,
   },
   {
-    path: "/sci",
+    path: "/planet/:path",
     name: "Sci",
     component: Sci,
   },
@@ -56,15 +57,19 @@ const routes = [
     component: Leaderboard,
   },
   {
-    path: "/history",
-    name: "History",
-    component: History,
+    path: '/planet/:path/:type',
+    name: 'QuestionTable',
+    component: QuestionTable
   },
   {
-    path: "/math/01",
-    name: "MQuiz1",
-    component: MQuiz1,
+    path: '/planet/:path/:type/:id',
+    name: 'Question',
+    component: Question
   },
+  { path: "/history",
+    name: "History",
+    component: History,
+  }
 ];
 
 const router = new VueRouter({

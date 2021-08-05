@@ -2,32 +2,28 @@
   <div class="mathplanet">
     <div class="star">
       <div>
-        <a href="http://localhost:8080/math/02">
           <img 
             class="star2" 
             src="../assets/star/star2b.png" 
-            alt="star2" width="15%" title="ดาวเศษส่วนและทศนิยม">
-        </a>
-        <a href="http://localhost:8080/math/04">
+            alt="star2" width="15%" title="ดาวเศษส่วนทศนิยม"
+            @click="choose(2)">
           <img 
             class="star4" 
             src="../assets/star/star4b.png" 
-            alt="star4" width="15%" title="ดาวเรขาคณิต">
-        </a>
+            alt="star4" width="15%" title="ดาวเรขาคณิต"
+            @click="choose(4)">
       </div>
       <div>
-        <a href="http://localhost:8080/math/01">
           <img 
             class="star1" 
             src="../assets/star/star1a.png" 
-            alt="star1" width="15%" title="ดาวบวกลบคูณหาร">
-        </a>
-        <a href="http://localhost:8080/math/03">
+            alt="star1" width="15%" title="ดาวบวกลบคูณหารทั่วไป"
+            @click="choose(1)">
           <img 
             class="star3" 
             src="../assets/star/star3b.png" 
-            alt="star3" width="15%" title="ดาวร้อยละ">
-        </a>
+            alt="star3" width="15%" title="ดาวจำนวนร้อยละ"
+            @click="choose(3)">
       </div>
     </div>
     <div class="textinfo">
@@ -73,7 +69,19 @@
 
 <script>
 export default {
-
+  data(){
+    return{
+      path: '',
+    }
+  },
+  async created(){
+    this.path = this.$route.params.path
+  },
+  methods:{
+    choose(type){
+      this.$router.push({name: 'QuestionTable', params: {path:this.path, type: type}})
+    }
+  }
 }
 </script>
 
