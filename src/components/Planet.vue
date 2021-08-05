@@ -20,6 +20,7 @@
           src="../assets/planet3.png"
           alt="planet3"
           width="22%"
+          @click="clickX('extra')"
         />
     </div>
 
@@ -77,9 +78,9 @@ export default {
     clickS(path){
       this.$router.push({name: 'Sci', params: {path:path}})
     },
-    // clickX(path){
-    //   this.$router.push({name: 'Extra'})
-    // }
+    clickX(path){
+      this.$router.push({name: 'ExtraSelect', params: {path:path}})
+    }
   }
 };
 </script>

@@ -11,6 +11,10 @@ import ExchangeRewards from "../views/ExchangeRewards.vue";
 import Question from '../views/question/Question'
 import QuestionTable from "../views/question/QuestionTable"
 import History from "../views/History.vue";
+import Wait from '../views/extra/WaitApprove'
+import ExtraSelect from '../views/extra/Extra'
+import Check from '../views/extra/Check'
+import AddExtra from '../views/extra/AddQuestion'
 
 
 Vue.use(VueRouter);
@@ -69,6 +73,26 @@ const routes = [
   { path: "/history",
     name: "History",
     component: History,
+  },
+  {
+    path: '/wait',
+    name: 'Wait',
+    component: Wait
+  },
+  {
+    path: '/planet/:path',
+    name: 'ExtraSelect',
+    component: ExtraSelect
+  },
+  {
+    path: '/wait/:id/check',
+    name: 'Check',
+    component: Check
+  },
+  {
+    path: '/planet/:path/add',
+    name: 'AddExtra',
+    component: AddExtra
   }
 ];
 

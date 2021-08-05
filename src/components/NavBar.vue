@@ -16,6 +16,7 @@
           <li><a @click="click('ExchangeRewards')">Reward</a></li>
           <li><a @click="click('Leaderboard')">Leaderboard</a></li>
           <li><a @click="click('History')">History</a></li>
+          <li><a @click="click('Wait')">Wait</a></li>
           <li><a @click="click('Login')">Logout</a></li>
         </ul>
       </div>
