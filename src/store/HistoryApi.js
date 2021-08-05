@@ -31,11 +31,11 @@ export default new Vuex.Store({
       let headers = AuthService.getApiHeader();
       let url = `${api_endpoint}/histories`;
       let body = {
-        date: payload1.date,
-        heading: payload1.heading,
-        point: payload1.point,
-        type: payload1.type,
-        user: [payload1.id],
+          "date": payload1.date,
+          "heading" : payload1.heading,
+          "point" : payload1.point,
+          "type": payload1.type,
+          "user": [payload1.id]
       };
       await axios.post(url, body, headers);
     },
