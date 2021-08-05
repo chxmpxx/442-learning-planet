@@ -10,10 +10,12 @@
         </div>
 
         <ul class="nav navbar-nav navbar-right">
+          <!-- <li class="active"><a href="#">Home</a></li> -->
           <li><a @click="click('/rewards')">Reward</a></li>
           <li><a @click="click('/leaderboard')">Leaderboard</a></li>
           <li><a @click="click('/history')">History</a></li>
-          <li><a @click="click('/logout')">Logout</a></li>
+          <li><a @click="click('/wait')">Wait</a></li>
+          <li><a @click="click('/')">Logout</a></li>
         </ul>
       </div>
     </nav>
