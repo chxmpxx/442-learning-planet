@@ -24,7 +24,6 @@ export default new Vuex.Store({
             let url = `${api_endpoint}/users?role.id=1`
             let headers = AuthService.getApiHeader()
             let res = await axios.get(url, headers)
-            console.log(2);
             commit('fetch', {res} )
         }
     },
