@@ -1,8 +1,8 @@
 <template>
-  <div class='mquiz1'>
+  <div class='squiz6'>
     <NavBar />
     <br><br><br><br><br>
-    <h1><b>แบบฝึกหัดบวกลบคูณหารทั่วไป</b></h1>
+    <h1><b>แบบฝึกหัดเอกภพ</b></h1>
     <br><br>
     <Quiz />
     <Quiz />
@@ -18,7 +18,7 @@
 import NavBar from "@/components/NavBar.vue";
 import Quiz from '@/components/Quiz.vue'
 export default {
-    name: "MQuiz1",
+    name: "SQuiz6",
     components: {
     NavBar,
     Quiz,
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.mquiz1 {
+.squiz6 {
   font-family: 'Prompt';
   font-weight: normal;
   font-style: normal;
@@ -35,7 +35,7 @@ export default {
   height: 100vh;
   overflow-x: hidden;
   background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)),
-      url("../assets/background.jpg");
+      url("../../assets/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

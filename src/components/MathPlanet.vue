@@ -6,7 +6,7 @@
           <img 
             class="star2" 
             src="../assets/star/star2b.png" 
-            alt="star2" width="15%" title="ดาวเศษส่วนและทศนิยม">
+            alt="star2" width="15%" title="ดาวเศษส่วนทศนิยม">
         </a>
         <a href="http://localhost:8080/math/04">
           <img 
@@ -20,13 +20,13 @@
           <img 
             class="star1" 
             src="../assets/star/star1a.png" 
-            alt="star1" width="15%" title="ดาวบวกลบคูณหาร">
+            alt="star1" width="15%" title="ดาวบวกลบคูณหารทั่วไป">
         </a>
         <a href="http://localhost:8080/math/03">
           <img 
             class="star3" 
             src="../assets/star/star3b.png" 
-            alt="star3" width="15%" title="ดาวร้อยละ">
+            alt="star3" width="15%" title="ดาวจำนวนร้อยละ">
         </a>
       </div>
     </div>
