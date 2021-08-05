@@ -3,20 +3,20 @@
     <nav class="navbar navbar-custom" style="z-index: 1">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="http://localhost:8080/home"
+          <a class="navbar-brand" @click="click('Home')"
             ><img src="../assets/logo.png" class="logo"
           /></a>
-          <a class="navbar-name" href="http://localhost:8080/home"
+          <a class="navbar-name" @click="click('Home')"
             >Learning Planet</a
           >
         </div>
 
         <ul class="nav navbar-nav navbar-right">
           <!-- <li class="active"><a href="#">Home</a></li> -->
-          <li><a href="http://localhost:8081/rewards">Reward</a></li>
+          <li><a @click="click('ExchangeRewards')">Reward</a></li>
           <li><a @click="click('Leaderboard')">Leaderboard</a></li>
-          <li><a href="http://localhost:8081/history">History</a></li>
-          <li><a href="http://localhost:8081/logout">Logout</a></li>
+          <li><a @click="click('History')">History</a></li>
+          <li><a @click="click('Login')">Logout</a></li>
         </ul>
       </div>
     </nav>
