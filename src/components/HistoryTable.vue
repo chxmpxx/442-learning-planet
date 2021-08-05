@@ -7,6 +7,7 @@
           <th>Date</th>
           <th>Detail</th>
           <th>Point</th>
+          <th>Type</th>
         </tr>
       </thead>
       <tbody>
@@ -15,6 +16,7 @@
           <td>{{ history.date }}</td>
           <td>{{ history.heading }}</td>
           <td>{{ history.point }}</td>
+          <td>{{ history.type }}</td>
         </tr>
       </tbody>
     </table>
@@ -23,7 +25,7 @@
 
 <script>
 import AuthUser from "@/store/AuthUser";
-import moment from "moment";
+
 export default {
   data() {
     return {
