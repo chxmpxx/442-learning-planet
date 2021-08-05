@@ -13,10 +13,10 @@
 
         <ul class="nav navbar-nav navbar-right">
           <!-- <li class="active"><a href="#">Home</a></li> -->
-          <li><a href="http://localhost:8080/rewards">Reward</a></li>
-          <li><a href="http://localhost:8080/board">Leaderboard</a></li>
-          <li><a href="http://localhost:8080/history">History</a></li>
-          <li><a href="http://localhost:8080/logout">Logout</a></li>
+          <li><a href="http://localhost:8081/rewards">Reward</a></li>
+          <li><a @click="click('Leaderboard')">Leaderboard</a></li>
+          <li><a href="http://localhost:8081/history">History</a></li>
+          <li><a href="http://localhost:8081/logout">Logout</a></li>
         </ul>
       </div>
     </nav>
@@ -24,7 +24,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    click(path){
+      this.$router.push({name: path})
+    }
+    
+  }
+};
 </script>
 
 <style lang="scss" scoped>

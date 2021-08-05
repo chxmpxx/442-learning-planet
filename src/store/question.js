@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import AuthService from '../services/AuthService'
 
 let api_endpoint = process.env.VUE_APP_USER_ENDPOINT || "http://localhost:3003"
 
@@ -11,7 +12,7 @@ export default new Vuex.Store({
         data: []
     },
     getters:{
-        members: (state) => state.data
+        qs: (state) => state.data
     },
     mutations: {
         fetch(state, {res} ){
@@ -19,8 +20,10 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        async fetchMember ({ commit }) {
-            let res = await axios.get(api_endpoint + "/users?role.id=1")
+        async fetchQ ({ commit }, payload) {
+            let url = `${api_endpoint}/${payload.path}s?type=${payload.type}`
+            let headers = AuthService.getApiHeader()
+            let res = await axios.get(url, headers)
             commit('fetch', {res} )
         }
     },

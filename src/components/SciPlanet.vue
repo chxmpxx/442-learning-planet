@@ -2,45 +2,39 @@
   <div class="sciplanet">
     <div class="star">
       <div>
-        <a href="http://localhost:8080/sci/02">
           <img 
             class="star2" 
             src="../assets/star/star2b.png" 
-            alt="star2" width="15%" title="ดาวน้ำฟ้าและดาวสุริยะ">
-        </a>
-        <a href="http://localhost:8080/sci/04">
+            alt="star2" width="15%" title="ดาวน้ำฟ้าและดาวสุริยะ"
+            @click="choose(2)">
           <img 
             class="star4" 
             src="../assets/star/star4b.png" 
-            alt="star4" width="15%" title="ดาวบรรยากาศ">
-        </a>
-        <a href="http://localhost:8080/sci/06">
+            alt="star4" width="15%" title="ดาวบรรยากาศ"
+            @click="choose(4)">
           <img 
             class="star6" 
             src="../assets/star/star6b.png" 
-            alt="star6" width="15%" title="ดาวเอกภพ">
-        </a>
+            alt="star6" width="15%" title="ดาวเอกภพ"
+            @click="choose(6)">
           
       </div>
       <div>
-        <a href="http://localhost:8080/sci/01">
           <img 
             class="star1" 
             src="../assets/star/star1a.png" 
-            alt="star1" width="15%" title="ดาวระบบสุริยะ">
-        </a>
-        <a href="http://localhost:8080/sci/03">
+            alt="star1" width="15%" title="ดาวระบบสุริยะ"
+            @click="choose(1)">
           <img 
             class="star3" 
             src="../assets/star/star3b.png" 
-            alt="star3" width="15%" title="ดาวโลกและการเปลี่ยนแปลง">
-        </a>
-        <a href="http://localhost:8080/sci/05">
+            alt="star3" width="15%" title="ดาวโลกและการเปลี่ยนแปลง"
+            @click="choose(3)">
           <img 
             class="star5" 
             src="../assets/star/star5b.png" 
-            alt="star5" width="15%" title="ดาวแสง">
-        </a>
+            alt="star5" width="15%" title="ดาวแสง"
+            @click="choose(5)">
       </div>
     </div>
     <div class="textinfo">
@@ -86,7 +80,19 @@
 
 <script>
 export default {
-
+  data(){
+    return{
+      path: '',
+    }
+  },
+  async created(){
+    this.path = this.$route.params.path
+  },
+  methods:{
+    choose(type){
+      this.$router.push({name: 'QuestionTable', params: {path:this.path, type: type}})
+    }
+  }
 }
 </script>
 

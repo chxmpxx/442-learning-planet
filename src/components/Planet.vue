@@ -1,30 +1,26 @@
 <template>
   <div class="mainplanet">
     <div class="planet">
-      <a href="http://localhost:8080/math">
         <img
           class="planet1"
           src="../assets/planet1.png"
           alt="planet1"
           width="15%"
+          @click="clickM('math')"
         />
-      </a>
-      <a href="http://localhost:8080/sci">
         <img
           class="planet2"
           src="../assets/planet2.png"
           alt="planet2"
           width="15%"
+          @click="clickS('sci')"
         />
-      </a>
-      <a href="https://www.w3schools.com">
         <img
           class="planet3"
           src="../assets/planet3.png"
           alt="planet3"
           width="22%"
         />
-      </a>
     </div>
 
     <div class="textinfo">
@@ -81,9 +77,9 @@ export default {
     clickS(path){
       this.$router.push({name: 'Sci', params: {path:path}})
     },
-    clickX(path){
-      this.$router.push({name: 'Extra'})
-    }
+    // clickX(path){
+    //   this.$router.push({name: 'Extra'})
+    // }
   }
 };
 </script>

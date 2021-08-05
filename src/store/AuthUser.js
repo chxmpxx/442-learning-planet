@@ -16,9 +16,9 @@ const initialState = {
 export default new Vuex.Store({
   state: initialState,
   mutations: {
-    loginSuccess(state, user, jwt) {
-      state.user = user;
-      state.jwt = jwt;
+    loginSuccess(state, res) {
+      state.user = res.user;
+      state.jwt = res.jwt;
       state.isAuthen = true;
     },
     logoutSuccess(state) {
@@ -31,14 +31,14 @@ export default new Vuex.Store({
     async login({ commit }, { username, password }) {
       let res = await AuthService.login({ username, password });
       if (res.success) {
-        commit("loginSuccess", res.user, res.jwt);
+        commit("loginSuccess", res);
       }
       return res;
     },
     async register({ commit }, { username, email, password }) {
       let res = await AuthService.register({ username, email, password });
       if (res.success) {
-        commit("loginSuccess", res.user, res.jwt);
+        commit("loginSuccess", res);
       }
       return res;
     },

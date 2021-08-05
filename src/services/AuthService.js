@@ -3,7 +3,7 @@ import axios from "axios";
 const auth_key = "auth-user";
 let auth = JSON.parse(localStorage.getItem(auth_key));
 const user = auth ? auth.user : "";
-const jwt = auth ? auth.jwt : "";
+// const jwt = auth ? auth.jwt : "";
 const api_endpoint =
   process.env.VUE_APP_USER_ENDPOINT || "http://localhost:1337";
 
@@ -12,6 +12,7 @@ export default {
     return user !== "" && jwt != "";
   },
   getApiHeader() {
+    let jwt = JSON.parse(localStorage.getItem(auth_key)).jwt
     if (jwt != "") {
       return {
         headers: {
@@ -47,10 +48,10 @@ export default {
       }
     } catch (e) {
       if (e.response.status === 400) {
-        console.error(e.response.data.message[0].message[0].message);
+        console.error(e.response.data.message[0].messages[0].message);
         return {
           success: false,
-          message: e.response.data.message[0].message[0].message,
+          message: e.response.data.message[0].messages[0].message,
         };
       }
     }
