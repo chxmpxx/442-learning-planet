@@ -26,6 +26,9 @@ export default new Vuex.Store({
       state.jwt = "";
       state.isAuthen = false;
     },
+    editUserData(state, res){
+      state.user = res.data 
+    }
   },
   actions: {
     async login({ commit }, { username, password }) {
@@ -46,6 +49,27 @@ export default new Vuex.Store({
       AuthService.logout();
       commit("logoutSuccess");
     },
+    async DoMQuiz({commit}, payload){
+      let res = await AuthService.doMQuiz(payload)
+      if(res.success){
+        commit('editUserData', res)
+      }
+      return res
+    },
+    async DoSQuiz({commit}, payload){
+      let res = await AuthService.doSQuiz(payload)
+      if(res.success){
+        commit('editUserData', res)
+      }
+      return res
+    },
+    async DoXQuiz({commit}, payload){
+      let res = await AuthService.doXQuiz(payload)
+      if(res.success){
+        commit('editUserData', res)
+      }
+      return res
+    }
   },
   getters: {
     user: (state) => state.user,

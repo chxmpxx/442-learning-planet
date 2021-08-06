@@ -93,4 +93,55 @@ export default {
   logout() {
     localStorage.removeItem(auth_key);
   },
+  async doMQuiz(payload){
+    let url = `${api_endpoint}/users/${payload.id}`
+    let body = {
+      "maths" : payload.maths
+    }
+    let headers = this.getApiHeader()
+    let res = await axios.put(url, body, headers)
+    if(res.status===200){
+      return {
+        data: res.data,
+        success: true
+      }
+    }
+    return {
+      success: false
+    }
+  },
+  async doSQuiz(payload){
+    let url = `${api_endpoint}/users/${payload.id}`
+    let body = {
+      "scis" : payload.scis
+    }
+    let headers = this.getApiHeader()
+    let res = await axios.put(url, body, headers)
+    if(res.status===200){
+      return {
+        data: res.data,
+        success: true
+      }
+    }
+    return {
+      success: false
+    }
+  },
+  async doXQuiz(payload){
+    let url = `${api_endpoint}/users/${payload.id}`
+    let body = {
+      "extras" : payload.extras
+    }
+    let headers = this.getApiHeader()
+    let res = await axios.put(url, body, headers)
+    if(res.status===200){
+      return {
+        data: res.data,
+        success: true
+      }
+    }
+    return {
+      success: false
+    }
+  }
 };
