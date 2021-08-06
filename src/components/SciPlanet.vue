@@ -4,17 +4,17 @@
       <div>
           <img 
             class="star2" 
-            src="../assets/star/star2b.png" 
+            src="../assets/star/star2a.png" 
             alt="star2" width="15%" title="ดาวน้ำฟ้าและดาวสุริยะ"
             @click="choose(2)">
           <img 
             class="star4" 
-            src="../assets/star/star4b.png" 
+            src="../assets/star/star4a.png" 
             alt="star4" width="15%" title="ดาวบรรยากาศ"
             @click="choose(4)">
           <img 
             class="star6" 
-            src="../assets/star/star6b.png" 
+            src="../assets/star/star6a.png" 
             alt="star6" width="15%" title="ดาวเอกภพ"
             @click="choose(6)">
           
@@ -27,12 +27,12 @@
             @click="choose(1)">
           <img 
             class="star3" 
-            src="../assets/star/star3b.png" 
+            src="../assets/star/star3a.png" 
             alt="star3" width="15%" title="ดาวโลกและการเปลี่ยนแปลง"
             @click="choose(3)">
           <img 
             class="star5" 
-            src="../assets/star/star5b.png" 
+            src="../assets/star/star5a.png" 
             alt="star5" width="15%" title="ดาวแสง"
             @click="choose(5)">
       </div>
@@ -90,7 +90,20 @@ export default {
   },
   methods:{
     choose(type){
-      this.$router.push({name: 'SQuestionTable', params: {path:this.path, type: type}})
+      if(type===1){
+        this.$router.push({name: 'ST1', params: {path:'sci', type: 1}})
+      }else if(type===2){
+        this.$router.push({name: 'ST2', params: {path:'sci', type: 2}})
+      }else if(type===3){
+        this.$router.push({name: 'ST3', params: {path:'sci', type: 3}})
+      }else if(type===4){
+        this.$router.push({name: 'ST4', params: {path:'sci', type: 4}})
+      }else if(type===5){
+        this.$router.push({name: 'ST5', params: {path:'sci', type: 5}})
+      }else if(type===6){
+        this.$router.push({name: 'ST6', params: {path:'sci', type: 6}})
+      }
+      
     }
   }
 }

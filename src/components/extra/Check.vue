@@ -1,20 +1,34 @@
 <template>
-    <div>
-        <h2>{{ q.heading }}</h2>
+    <div class='quiz'>
+        <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;โจทย์ : {{ q.heading }}</h1>
         <div class="choice">
-            <div><h2>{{ q.c1 }}</h2></div>
-            <div><h2>{{ q.c2 }}</h2></div>
-            <div><h2>{{ q.c3 }}</h2></div>
-            <div><h2>{{ q.c4 }}</h2></div>
+            <div>
+                <button>A</button>
+                <span>&nbsp;&nbsp; {{ q.c1 }}</span>
+            </div>
+            <div>
+                <button>B</button>
+                <span>&nbsp;&nbsp; {{ q.c2 }}</span>
+            </div>
+            <div>
+                <button>C</button>
+                <span>&nbsp;&nbsp; {{ q.c3 }}</span>
+            </div>
+            <div>
+                <button>D</button>
+                <span>&nbsp;&nbsp; {{ q.c4 }}</span>
+            </div>
         </div>
-        <h2>เฉลย: {{ this.q.ans }}</h2>
-        <div>
-            <label for="point">Point: </label>
-            <input type="number" v-model="q.points">
-        </div>
-        <div>
-            <button @click="approve">Approve</button>
-            <button @click="disApprove">Disapprove</button>
+        <h2>เฉลย : {{ this.q.ans }}</h2>
+        <div class='check'>
+            <div>
+                <label for="point">&nbsp;&nbsp;&nbsp;Point : &nbsp;</label>
+                <input type="number" v-model="q.points">
+            </div>
+            <div>
+                <button class='but' @click="approve">Approve</button>
+                <button class='but' @click="disApprove">Disapprove</button>
+            </div>
         </div>
     </div>
 </template>
@@ -87,12 +101,62 @@
 </script>
 
 <style lang="scss" scoped>
-    .choice{
-        display: grid;
-        grid-template-columns: 50% 50%;
-        width: 50%;
-        margin-left: auto;
-        margin-right: auto;
-        grid-row-gap: 30px;
-    }
+.quiz{
+    color: #4B4B4B;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-style: solid;
+    border-width: 0.3em;
+    border-radius: 15px;
+    border-color: tomato;
+    margin: 0em 7em 5em 7em;
+    padding: 1em 2em 2.5em 2em;
+    text-align: left;
+}
+h1{
+    font-size: 2em;
+    line-height: 1.6em;
+    text-align: left;
+}
+h2{
+    font-size: 2em;
+    line-height: 1.6em;
+    text-align: center;
+}
+.choice{
+    margin-top: 0.5em;
+    font-size: 2em;
+    padding-left: 5em;
+}
+button{
+    font-size: 1em;
+    padding: 0 0.4em 0 0.4em;
+    margin-top: 0.5em;
+    border-radius: 50%;
+    transition: 0.5s;
+    border-width: 1px;
+}
+button:hover{
+    background-color: tomato;
+    color: #ffffff;
+    border-color: #ffffff;
+    transition: 0.5s;
+}
+.check{
+    font-size: 1.5em;
+    text-align: center;
+}
+label{
+    color:tomato
+}
+input{
+    width: 8em;
+    text-align: center;
+}
+.but{
+    border-radius: 5px;
+    border-width: 1px;
+    width: 6.4em;
+    height: 2em;
+    margin: 0.5em 1em 0.5em 0em;
+}
 </style>

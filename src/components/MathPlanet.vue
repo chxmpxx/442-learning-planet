@@ -4,12 +4,12 @@
       <div>
           <img 
             class="star2" 
-            src="../assets/star/star2b.png" 
+            src="../assets/star/star2a.png" 
             alt="star2" width="15%" title="ดาวเศษส่วนทศนิยม"
             @click="choose(2)">
           <img 
             class="star4" 
-            src="../assets/star/star4b.png" 
+            src="../assets/star/star4a.png" 
             alt="star4" width="15%" title="ดาวเรขาคณิต"
             @click="choose(4)">
       </div>
@@ -21,7 +21,7 @@
             @click="choose(1)">
           <img 
             class="star3" 
-            src="../assets/star/star3b.png" 
+            src="../assets/star/star3a.png" 
             alt="star3" width="15%" title="ดาวจำนวนร้อยละ"
             @click="choose(3)">
       </div>
@@ -79,7 +79,15 @@ export default {
   },
   methods:{
     choose(type){
-      this.$router.push({name: 'MQuestionTable', params: {path:this.path, type: type}})
+      if(type===2){
+        this.$router.push({name: 'MT2', params: {path:'math', type: 2}})
+      }else if(type===1){
+        this.$router.push({name: 'MT1', params: {path:'math', type: 1}})
+      }else if(type===3){
+        this.$router.push({name: 'MT3', params: {path:'math', type: 3}})
+      }else if(type===4){
+        this.$router.push({name: 'MT4', params: {path:'math', type: 4}})
+      }
     }
   }
 }

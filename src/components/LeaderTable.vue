@@ -1,6 +1,7 @@
 <template>
   <div class="leaderpage">
-    <h1>Leaderboard</h1>
+  <h1>Leaderboard</h1>
+  <br>
     <div class="select_time">
       <h2 style="margin:10px 0px;" class="timetext">Time Select</h2>
       <div>
@@ -299,18 +300,7 @@ export default {
 }
 ////////////////////////////////////
 .leaderpage {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)),
-    url("../assets/background.jpg");
-  background-size: cover;
-  background-position: center;
+  overflow-x: hidden;
 }
 .container {
   display: grid;
@@ -345,12 +335,11 @@ td {
 }
 h1 {
   color: gold;
-  margin-top: 0px;
   font-family: "8BITWONDERNominal";
   font-weight: normal;
   font-style: normal;
   font-size: 3em;
-  margin-top: -5em;
+  padding-top: 50px;
 }
 .useboard,
 .earnboard {
