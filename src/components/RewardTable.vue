@@ -15,7 +15,7 @@
           <button
             @click="
               exchange(
-                reward, index
+                reward,index
               )
             "
           >

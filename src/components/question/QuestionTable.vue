@@ -40,6 +40,7 @@
 import DocService from '../../services/DocService'
 import AuthUser from '../../store/AuthUser'
 import History from '../../store/HistoryApi'
+import Member from '../../store/member'
 import moment from 'moment'
 export default {
     props:{
@@ -60,11 +61,14 @@ export default {
             },
             user: {},
             i: false,
+            user_id:'',
             status: false //ตอนหลังต้องแก้เป็นเช็คว่าทำหรือยัง
         }
     },
     async created(){
         let q = await DocService.getWaitApproveById(this.id, this.path)
+        this.user_id = JSON.parse(localStorage.getItem('auth-user')).user.id
+        this.user = await Member.dispatch('searchMe', {id:this.user_id})
         this.qs.question = q.question
         this.qs.c1 = q.c1
         this.qs.c2 = q.c2
@@ -72,7 +76,6 @@ export default {
         this.qs.c4 = q.c4
         this.qs.ans  = q.ans
         this.qs.point = q.point
-        this.user = AuthUser.getters.user
         this.checkDo()
     },
     methods:{
