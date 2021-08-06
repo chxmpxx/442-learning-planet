@@ -38,6 +38,9 @@
 
 <script>
 import DocService from '../../services/DocService'
+import AuthUser from '../../store/AuthUser'
+import History from '../../store/HistoryApi'
+import moment from 'moment'
 export default {
     props:{
         id: '',
@@ -55,6 +58,8 @@ export default {
                 ans: '',
                 point: 0
             },
+            user: {},
+            i: false,
             status: false //ตอนหลังต้องแก้เป็นเช็คว่าทำหรือยัง
         }
     },
@@ -67,19 +72,101 @@ export default {
         this.qs.c4 = q.c4
         this.qs.ans  = q.ans
         this.qs.point = q.point
+        this.user = AuthUser.getters.user
+        this.checkDo()
     },
     methods:{
         back(){
-            this.$router.push({name: 'QuestionTable', params: {path:this.path, type: this.type}})
+            this.$router.go(-1)
         },
-        select(c){
+        async select(c){
             this.status = true //ตอนหลังต้องแก้เป็นเช็คว่าทำหรือยัง
             if(c=== this.qs.ans){
+                await this.addHistory(this.path)
+                await this.addDo(this.path)
                 this.$swal("Your answer is correct!", `You get ${this.qs.point} point!`,'success')
             }else{
+                await this.addDo(this.path)
                 this.$swal({title: "Your answer is incorrect!", icon: 'error'})
             }
-            this.$router.push({name: 'QuestionTable', params: {path: this.path, type: this.type}})
+            this.$router.go(-1)
+        },
+        checkDo(){
+            if(this.path==='math'){
+                this.checkM(this.id)
+                if(this.i){
+                    this.status = true
+                }
+            }else if(this.path==='sci'){
+                this.checkS(this.id)
+                if(this.i){
+                    this.status = true
+                }
+            }else if(this.path==='extra'){
+                this.checkX(this.id)
+                if(this.i){
+                    this.status = true
+                }
+            }
+        },
+        checkM(id){
+            this.user.maths.forEach(element => {
+                if(id==element.id){
+                    this.i = true
+                }
+            });
+        },
+        checkS(id){
+            this.user.scis.forEach(element => {
+                if(id==element.id){
+                    this.i = true
+                }
+            });
+        },
+        checkX(id){
+            this.user.extras.forEach(element => {
+                if(id==element.id){
+                    this.i = true
+                }
+            });
+        },
+        async addHistory(path){
+            let date = moment().toISOString()
+            let payload1 = {
+                date: moment(date).format('YYYY-MM-DD'),
+                heading: `Do ${path} quiz corretly (${this.id})`,
+                point: ''+this.qs.point,
+                type: 'get',
+                id: this.user.id
+            }
+            await History.dispatch('addHistory', payload1)
+        },
+        async addDo(path){
+            if(path==='math'){
+                let m = this.user.maths.map(it => it.id)
+                m.push(this.id)
+                let payload = {
+                    id : this.user.id,
+                    maths: m
+                }
+                await AuthUser.dispatch('DoMQuiz', payload)
+            }else if(path === 'sci'){
+                let s = this.user.scis.map(it => it.id)
+                s.push(this.id)
+                let payload = {
+                    id: this.user.id,
+                    scis: s
+                }
+                await AuthUser.dispatch('DoSQuiz', payload)
+            }else if(path === 'extra'){
+                let x = this.user.extras.map(it => it.id)
+                x.push(this.id)
+                let payload = {
+                    id: this.user.id,
+                    extras: x
+                }
+                await AuthUser.dispatch('DoXQuiz', payload)
+            }
         }
     }
 }
