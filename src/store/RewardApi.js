@@ -37,11 +37,11 @@ export default new Vuex.Store({
     addReward({ commit }, payload) {
       commit("add", { payload });
     },
-    editReward({ commit }, payload) {
-      let headers = AuthService.getApiHeader();
-      let res = await Axios.put(api_endpoint + "/rewards", headers);
-      commit("edit", { payload });
-    },
+    // editReward({ commit }, payload) {
+    //   let headers = AuthService.getApiHeader();
+    //   let res = await Axios.put(api_endpoint + "/rewards", headers);
+    //   commit("edit", { payload });
+    // },
   },
   modules: {},
 });

@@ -8,7 +8,7 @@
           <div>{{ reward.name }}</div>
           <div>{{ reward.point }} points</div>
           <div>Stock : {{ reward.amount }}</div>
-          <button @click="exchange(reward.point)">Exchange</button>
+          <button @click="exchange(reward.point, reward.name)">Exchange</button>
         </div>
       </div>
     </div>
@@ -41,6 +41,7 @@ export default {
   },
   beforeUpdate() {
     this.fetchReward();
+    this.calpoint();
   },
   methods: {
     async fetchReward() {
@@ -64,17 +65,20 @@ export default {
       });
       this.current_point = this.total_get - this.total_use;
     },
-    async exchange(reward_point) {
+    async exchange(reward_point, reward_name) {
       if (this.current_point >= reward_point) {
         let date = moment().toISOString();
         let payload1 = {
           date: moment(date).format("YYYY-MM-DD"),
-          heading: "Exchange reward",
+          heading: "Exchange " + reward_name,
           point: reward_point,
           type: "use",
-          user: AuthUser.getters.user,
+          id: AuthUser.getters.user.id,
         };
-        await HistoryApiStore.dispatch("addHistory", payload1);
+        let res = await HistoryApiStore.dispatch("addHistory", payload1);
+        this.$swal({ title: "Exchange Success", icon: "success" });
+        this.fetchUser;
+        location.reload();
       } else {
         this.$swal("Exchange Failed", "Not enough points", "error");
       }

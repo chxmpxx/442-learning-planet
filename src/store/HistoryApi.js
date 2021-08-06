@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import Axios from "axios";
+import axios from "axios";
 import AuthService from "@/services/AuthService";
 
 let api_endpoint = process.env.VUE_APP_USER_ENDPOINT || "http://localhost:1337";
@@ -18,26 +18,27 @@ export default new Vuex.Store({
     fetch(state, { res }) {
       state.data = res.data;
     },
-    add(state, { payload }) {
+    add(state, payload) {
       state.data.push(payload);
     },
   },
   actions: {
     async fetchHistory({ commit }) {
-      let res = await Axios.get(api_endpoint + "/histories");
+      let res = await axios.get(api_endpoint + "/histories");
       commit("fetch", { res });
     },
     async addHistory({ commit }, payload1) {
-      let headers = AuthService.getApiHeader();
       let url = `${api_endpoint}/histories`;
       let body = {
-          "date": payload1.date,
-          "heading" : payload1.heading,
-          "point" : payload1.point,
-          "type": payload1.type,
-          "user": [payload1.id]
+        date: payload1.date,
+        heading: payload1.heading,
+        point: payload1.point,
+        type: payload1.type,
+        user: [payload1.id],
       };
-      await axios.post(url, body, headers);
+      let headers = AuthService.getApiHeader();
+      let res = await axios.post(url, body, headers);
+      commit("add", res.data);
     },
   },
   modules: {},
