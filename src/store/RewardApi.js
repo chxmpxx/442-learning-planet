@@ -21,8 +21,8 @@ export default new Vuex.Store({
     add(state, payload) {
       state.data.push(payload);
     },
-    edit(state, payload) {
-      state.data[payload.index] = payload;
+    edit(state, payload1) {
+      state.data[payload1.index] = payload1.data;
     },
   },
   actions: {
@@ -42,7 +42,6 @@ export default new Vuex.Store({
       };
       let res = await Axios.post(url, body, headers);
       commit("add", { payload });
-      console.log(res);
     },
 
     async exchangeReward({ commit }, payload) {
@@ -50,20 +49,26 @@ export default new Vuex.Store({
         amount: payload.amount,
       };
       let headers = AuthService.getApiHeader();
-      await Axios.put(api_endpoint + "/rewards/" + payload.id, body, headers);
-      commit("edit", { payload });
+      let res = await Axios.put(api_endpoint + "/rewards/" + payload.id, body, headers);
+      if(res.status ===200){
+        let payload1 = {
+          data: res.data,
+          index: payload.index
+        }
+        commit("edit",  payload1);
+      }
     },
-    async editReward({ commit }, payload) {
-      let body = {
-        name: payload.name,
-        point: payload.point,
-        image: payload.image,
-        amount: payload.amount,
-      };
-      let headers = AuthService.getApiHeader();
-      await Axios.put(api_endpoint + "/rewards/" + id, body, headers);
-      commit("edit", { payload });
-    },
+    // async editReward({ commit }, payload) {
+    //   let body = {
+    //     name: payload.name,
+    //     point: payload.point,
+    //     image: payload.image,
+    //     amount: payload.amount,
+    //   };
+    //   let headers = AuthService.getApiHeader();
+    //   await Axios.put(api_endpoint + "/rewards/" + id, body, headers);
+    //   commit("edit", { payload });
+    // },
   },
   modules: {},
 });

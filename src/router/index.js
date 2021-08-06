@@ -24,6 +24,8 @@ import ST3 from '../views/question/sci/S3Table'
 import ST4 from '../views/question/sci/S4Table'
 import ST5 from '../views/question/sci/S5Table'
 import ST6 from '../views/question/sci/S6Table'
+import AddReward from '../views/AddReward'
+import RewardAdmin from '../views/RewardAdmin'
 
 Vue.use(VueRouter);
 
