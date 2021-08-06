@@ -18,14 +18,11 @@ export default new Vuex.Store({
     fetch(state, { res }) {
       state.data = res.data;
     },
-    add(state, { payload }) {
+    add(state, payload) {
       state.data.push(payload);
     },
-    edit(state, { payload }) {
-      state.data[payload.index].name = payload.name;
-      state.data[payload.index].point = payload.point;
-      state.data[payload.index].image = payload.image;
-      state.data[payload.index].amount = payload.amount;
+    edit(state, payload) {
+      state.data[payload.index] = payload;
     },
   },
   actions: {
@@ -34,17 +31,37 @@ export default new Vuex.Store({
       let res = await Axios.get(api_endpoint + "/rewards", headers);
       commit("fetch", { res });
     },
-    addReward({ commit }, payload) {
-      commit("add", { payload });
-    },
-    // editReward({ commit }, payload) {
-    //   let headers = AuthService.getApiHeader();
-    //   let res = await Axios.put(api_endpoint + "/rewards", headers);
-    //   commit("edit", { payload });
-    // },
-    async editReward({ commit }, payload) {
+    async addReward({ commit }, payload) {
       let headers = AuthService.getApiHeader();
-      let res = await Axios.put(api_endpoint + "/rewards", headers);
+      let url = `${api_endpoint}/rewards`;
+      let body = {
+        name: payload.name,
+        point: payload.point,
+        image: payload.image,
+        amount: payload.amount,
+      };
+      let res = await Axios.post(url, body, headers);
+      commit("add", { payload });
+      console.log(res);
+    },
+
+    async exchangeReward({ commit }, payload) {
+      let body = {
+        amount: payload.amount,
+      };
+      let headers = AuthService.getApiHeader();
+      await Axios.put(api_endpoint + "/rewards/" + payload.id, body, headers);
+      commit("edit", { payload });
+    },
+    async editReward({ commit }, payload) {
+      let body = {
+        name: payload.name,
+        point: payload.point,
+        image: payload.image,
+        amount: payload.amount,
+      };
+      let headers = AuthService.getApiHeader();
+      await Axios.put(api_endpoint + "/rewards/" + id, body, headers);
       commit("edit", { payload });
     },
   },

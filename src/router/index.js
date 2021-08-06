@@ -120,15 +120,12 @@ const routes = [
     component: XQuestionTable
   },
   {
-    path: '/region/:path/:type/:id',
-    name: 'Question',
-    component: Question
-  },
-  { path: "/history",
-    name: "History",
-    component: History,
+    path: "/region/:path/:type/:id",
+    name: "Question",
+    component: Question,
   },
   { path: "/history", name: "History", component: History },
+
   {
     path: "/wait",
     name: "Wait",
@@ -148,6 +145,16 @@ const routes = [
     path: "/planet/:path/add",
     name: "AddExtra",
     component: AddExtra,
+  },
+  {
+    path: "/addreward",
+    name: "AddReward",
+    component: AddReward,
+  },
+  {
+    path: "/rewardadmin",
+    name: "RewardAdmin",
+    component: RewardAdmin,
   },
 ];
 

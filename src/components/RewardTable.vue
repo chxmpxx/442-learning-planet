@@ -4,11 +4,27 @@
     <div class="show1">
       <div v-for="reward in rewards" :key="reward.id">
         <div>
-          <img v-bind:src="reward.image" alt="reward.name" class="img" />
+          <img
+            class="img"
+            :src="getApi() + reward.image.url"
+            :alt="reward.name"
+          />
           <div>{{ reward.name }}</div>
           <div>{{ reward.point }} points</div>
           <div>Stock : {{ reward.amount }}</div>
-          <button @click="exchange(reward.point, reward.name)">Exchange</button>
+          <button
+            @click="
+              exchange(
+                reward.point,
+                reward.name,
+                reward.amount,
+                reward.id,
+                reward.index
+              )
+            "
+          >
+            Exchange
+          </button>
         </div>
       </div>
     </div>
@@ -20,6 +36,7 @@ import RewardApiStore from "@/store/RewardApi";
 import AuthUser from "@/store/AuthUser";
 import moment from "moment";
 import HistoryApiStore from "@/store/HistoryApi";
+let api_endpoint = process.env.VUE_APP_USER_ENDPOINT || "http://localhost:1337";
 export default {
   data() {
     return {
@@ -41,9 +58,13 @@ export default {
   },
   beforeUpdate() {
     this.fetchReward();
+    this.fetchUser();
     this.calpoint();
   },
   methods: {
+    getApi() {
+      return api_endpoint;
+    },
     async fetchReward() {
       await RewardApiStore.dispatch("fetchReward");
       this.rewards = RewardApiStore.getters.rewards;
@@ -51,7 +72,7 @@ export default {
     async fetchUser() {
       this.a = AuthUser.getters.user;
       this.point = this.a.histories;
-      this.calpoint;
+      this.calpoint();
     },
     calpoint() {
       this.total_get = 0;
@@ -65,7 +86,13 @@ export default {
       });
       this.current_point = this.total_get - this.total_use;
     },
-    async exchange(reward_point, reward_name) {
+    async exchange(
+      reward_point,
+      reward_name,
+      reward_amount,
+      reward_id,
+      reward_index
+    ) {
       if (this.current_point >= reward_point) {
         let date = moment().toISOString();
         let payload1 = {
@@ -75,13 +102,24 @@ export default {
           type: "use",
           id: AuthUser.getters.user.id,
         };
-        let res = await HistoryApiStore.dispatch("addHistory", payload1);
+        await HistoryApiStore.dispatch("addHistory", payload1);
         this.$swal({ title: "Exchange Success", icon: "success" });
-        this.fetchUser;
+        this.reward_decrease(reward_amount, reward_id, reward_index);
+        this.fetchUser();
+
         location.reload();
       } else {
         this.$swal("Exchange Failed", "Not enough points", "error");
       }
+    },
+    async reward_decrease(amount, id, index) {
+      amount = parseInt(amount) - 1;
+      let payload2 = {
+        amount: "" + amount,
+        id: id,
+        index: index,
+      };
+      await RewardApiStore.dispatch("exchangeReward", payload2);
     },
   },
 };
@@ -104,8 +142,9 @@ export default {
   padding-right: 30px;
   font-size: 20px;
 }
+
 .img {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
 }
 </style>

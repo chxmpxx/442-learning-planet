@@ -11,8 +11,16 @@
 
         <ul class="nav navbar-nav navbar-right">
           <!-- <li class="active"><a href="#">Home</a></li> -->
-          <li><a @click="click('/rewards')">Reward</a></li>
-          <li><a @click="click('/leaderboard')">Leaderboard</a></li>
+          <!-- <li v-if=""></li> -->
+          <li v-if="this.role == 1">
+            <a @click="click('/rewards')">Reward</a>
+          </li>
+          <li v-if="this.role == 3">
+            <a @click="click('/rewardadmin')">Reward</a>
+          </li>
+          <li>
+            <a @click="click('/leaderboard')">Leaderboard</a>
+          </li>
           <li><a @click="click('/history')">History</a></li>
           <li><a @click="click('/wait')">Wait</a></li>
           <li><a @click="click('/')">Logout</a></li>
@@ -23,10 +31,22 @@
 </template>
 
 <script>
+import AuthUser from "@/store/AuthUser";
 export default {
+  data() {
+    return { role: "" };
+  },
+  mounted() {
+    this.getRole();
+  },
   methods: {
     click(path) {
       this.$router.push({ path: path });
+    },
+    async getRole() {
+      let res = AuthUser.getters.user.role.id;
+      console.log(res);
+      this.role = res;
     },
   },
 };
