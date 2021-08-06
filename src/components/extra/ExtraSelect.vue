@@ -21,7 +21,7 @@ export default {
             return this.$router.push({name: 'AddExtra', params: {path: this.path}})
         },
         doEx(){
-            return this.$router.push({name: 'QuestionTable', params: {path: this.path, type:'1'}})
+            return this.$router.push({name: 'XQuestionTable', params: {path: this.path, type:'1'}})
         }
     },
     props:{
@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .mode{
         display: grid;
         grid-template-columns: 50% 50%;

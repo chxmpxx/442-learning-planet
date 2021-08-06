@@ -1,36 +1,34 @@
 <template>
-    <div class='question'>
+    <div class='qtable'>
         <NavBar />
         <br><br><br><br><br>
-        <question :id="this.id" :type="this.type" :path="this.path" />
+        <question-table :path="this.path" :type="this.type"/>
     </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import Question from '../../components/question/Question.vue'
+import QuestionTable from '../../components/question/QuestionTable.vue'
 export default {
-    data(){
-        return{
-            path: '',
-            type: '',
-            id: ''
-        }
-    },
     components:{
         NavBar,
-        Question
+        QuestionTable
+    },
+    data(){
+        return{
+            type: '',
+            path: ''
+        }
     },
     created(){
         this.path = this.$route.params.path
         this.type = this.$route.params.type
-        this.id = this.$route.params.id
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.question{
+.qtable{
     font-family: 'Prompt';
     font-weight: normal;
     font-style: normal;

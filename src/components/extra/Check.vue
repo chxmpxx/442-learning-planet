@@ -76,7 +76,7 @@
                     heading: "Add Question",
                     point: this.q.points,
                     type: 'get',
-                    user: this.q.user
+                    id: this.q.user
                 }
                 await History.dispatch('addHistory', payload1)
                 await Question.dispatch('deleteQuestion',{id:this.id})
@@ -86,7 +86,7 @@
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .choice{
         display: grid;
         grid-template-columns: 50% 50%;
