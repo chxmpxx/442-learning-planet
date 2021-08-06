@@ -54,7 +54,7 @@
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
     table{
         width: 50%;
     }

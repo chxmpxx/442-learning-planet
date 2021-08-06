@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .mode{
         display: grid;
         grid-template-columns: 50% 50%;
