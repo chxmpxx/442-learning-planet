@@ -86,7 +86,7 @@
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .choice{
         display: grid;
         grid-template-columns: 50% 50%;

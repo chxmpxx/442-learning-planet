@@ -83,7 +83,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .show1 {
   padding-top: 80px;
   width: 100vw;

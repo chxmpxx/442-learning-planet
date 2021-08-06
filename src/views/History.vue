@@ -13,7 +13,7 @@ export default {
 };
 </script>
 
-<style>
+<style style lang="scss" scoped>
 .table {
   padding-top: 120px;
 }

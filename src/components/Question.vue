@@ -1,25 +1,29 @@
 <template>
     <div>
-        <h1>{{this.path}}{{this.type}}</h1>
-        <h2>{{qs.question}}</h2>
-        <div class="choice">
-            <div>
-                <button @click="select(qs.c1)" v-if="!status">1</button>
-                <h2>{{ qs.c1 }}</h2>
-            </div>
-            <div>
-                <button @click="select(qs.c2)" v-if="!status">2</button>
-                <h2>{{ qs.c2 }}</h2>
-            </div>
-            <div>
-                <button @click="select(qs.c3)" v-if="!status">3</button>
-                <h2>{{ qs.c3 }}</h2>
-            </div>
-            <div>
-                <button @click="select(qs.c4)" v-if="!status">4</button>
-                <h2>{{ qs.c4 }}</h2>
+        <h1>{{this.path}}&nbsp;{{this.type}}</h1>
+        <br><br>
+        <div class='quiz'>
+            <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{qs.question}}</h2>
+            <div class="choice">
+                <div>
+                    <button @click="select(qs.c1)" v-if="!status">A</button>
+                    <span>&nbsp;&nbsp; {{ qs.c1 }}</span>
+                </div>
+                <div>
+                    <button @click="select(qs.c2)" v-if="!status">B</button>
+                    <span>&nbsp;&nbsp; {{ qs.c2 }}</span>
+                </div>
+                <div>
+                    <button @click="select(qs.c3)" v-if="!status">C</button>
+                    <span>&nbsp;&nbsp; {{ qs.c3 }}</span>
+                </div>
+                <div>
+                    <button @click="select(qs.c4)" v-if="!status">D</button>
+                    <span>&nbsp;&nbsp; {{ qs.c4 }}</span>
+                </div>
             </div>
         </div>
+        
         <div>
             <button v-if="status" @click="back">BACK</button>
         </div>
@@ -81,6 +85,56 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.quiz{
+    color: #4B4B4B;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-width: 1.5px;
+    border-radius: 15px;
+    margin: 0em 7em 5em 7em;
+    padding: 1em 2em 2.5em 2em;
+    text-align: left;
+}
+.choice{
+    margin-top: 0.5em;
+    font-size: 2em;
+    padding-left: 5em;
+}
+button{
+    font-size: 1em;
+    padding: 0 0.4em 0 0.4em;
+    margin-top: 1em;
+    border-radius: 50%;
+    transition: 0.5s;
+    border-width: 1px;
+}
+button:hover{
+    background-color: tomato;
+    color: #ffffff;
+    border-color: #ffffff;
+    transition: 0.5s;
+}
+h1{
+  margin-top: 0em;
+  color: #ffffff;
+  font-size: 4em;
+  text-shadow: 0 0 20px #fff;
+  animation: pulse 2s ease-in infinite;
+  cursor: default;
+}
+h2{
+    font-size: 2em;
+    line-height: 1.6em;
+}
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
 </style>

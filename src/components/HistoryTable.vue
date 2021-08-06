@@ -45,7 +45,7 @@ export default {
 };
 </script>
 
-<style>
+<style style lang="scss" scoped>
 th,
 td {
   text-align: left;
