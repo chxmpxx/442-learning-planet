@@ -45,7 +45,7 @@ export default {
     },
     async getRole() {
       let res = AuthUser.getters.user.role.id;
-      console.log(res);
+
       this.role = res;
     },
   },
