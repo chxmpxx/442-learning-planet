@@ -37,7 +37,7 @@ export default new Vuex.Store({
     addReward({ commit }, payload) {
       commit("add", { payload });
     },
-    editReward({ commit }, payload) {
+    async editReward({ commit }, payload) {
       let headers = AuthService.getApiHeader();
       let res = await Axios.put(api_endpoint + "/rewards", headers);
       commit("edit", { payload });

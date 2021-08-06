@@ -79,7 +79,7 @@ export default {
   },
   methods:{
     choose(type){
-      this.$router.push({name: 'QuestionTable', params: {path:this.path, type: type}})
+      this.$router.push({name: 'MQuestionTable', params: {path:this.path, type: type}})
     }
   }
 }

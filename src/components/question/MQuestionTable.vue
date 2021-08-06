@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import QuestionTable from '../store/question'
+import QuestionTable from '../../store/question'
 export default {
     props:{
         path:'',

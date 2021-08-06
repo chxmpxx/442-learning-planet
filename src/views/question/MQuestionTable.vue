@@ -1,26 +1,24 @@
 <template>
     <div>
-        <question :id="this.id" :type="this.type" :path="this.path" />
+        <m-question-table :path="this.path" :type="this.type" />
     </div>
 </template>
 
 <script>
-import Question from "../../components/question/Question.vue"
+import MQuestionTable from "../../components/question/MQuestionTable.vue"
 export default {
+    components:{
+        MQuestionTable
+    },
     data(){
         return{
-            path: '',
             type: '',
-            id: ''
+            path: ''
         }
-    },
-    components:{
-        Question
     },
     created(){
         this.path = this.$route.params.path
         this.type = this.$route.params.type
-        this.id = this.$route.params.id
     }
 }
 </script>

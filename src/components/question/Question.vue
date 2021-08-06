@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import DocService from '../services/DocService'
+import DocService from '../../services/DocService'
 export default {
     props:{
         id: '',

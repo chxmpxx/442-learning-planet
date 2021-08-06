@@ -1,14 +1,14 @@
 <template>
     <div>
-        <question-table :path="this.path" :type="this.type" />
+        <x-question-table :path="this.path" :type="this.type" />
     </div>
 </template>
 
 <script>
-import QuestionTable from '../../components/QuestionTable.vue'
+import XQuestionTable from "../../components/question/XQuestionTable.vue"
 export default {
     components:{
-        QuestionTable
+        XQuestionTable
     },
     data(){
         return{

@@ -37,7 +37,7 @@ export default new Vuex.Store({
           "type": payload1.type,
           "user": [payload1.id]
       };
-      await axios.post(url, body, headers);
+      await Axios.post(url, body, headers);
     },
   },
   modules: {},
