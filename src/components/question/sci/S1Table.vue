@@ -28,12 +28,12 @@
 </template>
 
 <script>
-import QuestionTable from '../../store/question'
+import QuestionTable from '../../../store/question'
 export default {
     data(){
         return{
            qs: [],
-           path: 'extra',
+           path: 'sci',
            type: '1'
         }
     },
@@ -43,7 +43,7 @@ export default {
     methods:{
         async fetchQ(){
             let payload = {
-                path: 'extra',
+                path: 'sci',
                 type: '1'
             } 
             await QuestionTable.dispatch('fetchQ', payload)

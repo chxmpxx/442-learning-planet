@@ -2,13 +2,13 @@
     <div class='qtable'>
         <NavBar />
         <br><br><br><br><br>
-        <question-table :path="this.path" :type="this.type"/>
+        <question-table/>
     </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import QuestionTable from '../../components/question/QuestionTable.vue'
+import QuestionTable from "@/components/question/sci/S1Table"
 export default {
     components:{
         NavBar,
@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style>
 .qtable{
     font-family: 'Prompt';
     font-weight: normal;
@@ -36,7 +36,7 @@ export default {
     height: 100vh;
     overflow: hidden;
     background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)),
-        url("../../assets/background.jpg");
+        url("../../../assets/background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

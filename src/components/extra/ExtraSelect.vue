@@ -21,7 +21,7 @@ export default {
             return this.$router.push({name: 'AddExtra', params: {path: this.path}})
         },
         doEx(){
-            return this.$router.push({name: 'XQuestionTable', params: {path: this.path, type:'1'}})
+            return this.$router.push({name: 'XQuestionTable', params: {path: 'extra', type:'1'}})
         }
     },
     props:{
