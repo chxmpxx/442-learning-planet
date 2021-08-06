@@ -36,6 +36,7 @@ export default new Vuex.Store({
         type: payload1.type,
         user: [payload1.id],
       };
+      let headers = AuthService.getApiHeader();
       await axios.post(url, body, headers);
     },
   },

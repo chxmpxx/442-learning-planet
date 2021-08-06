@@ -8,7 +8,7 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import Question from '../../components/question/Question.vue'
+import Question from '../../components/question/QuestionTable.vue'
 export default {
     data(){
         return{
