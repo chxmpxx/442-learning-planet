@@ -80,7 +80,7 @@ export default {
         // console.error(e.response.data.message[0].message[0].message);
         return {
           success: false,
-          message: e.response.data.message[0].message[0].message,
+          message: e.response.data.message[0].messages[0].message
         };
       } else {
         return {
