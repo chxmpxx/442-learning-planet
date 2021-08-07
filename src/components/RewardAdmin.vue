@@ -3,7 +3,7 @@
     <button class="addre" @click="click('/addreward')">Add reward</button>
 
     <div class="show1">
-      <div v-for="reward in rewards" :key="reward.id">
+      <div v-for="(reward, index) in rewards" :key="index">
         <div>
           <img
             class="img"
@@ -13,7 +13,7 @@
           <div>{{ reward.name }}</div>
           <div>{{ reward.point }} points</div>
           <div>Stock : {{ reward.amount }}</div>
-          <button>Edit</button>
+          <button @click="edit(reward, index)">Edit</button>
         </div>
       </div>
     </div>
@@ -34,10 +34,7 @@ export default {
     };
   },
 
-  created() {
-    this.fetchReward();
-  },
-  beforeUpdate() {
+  async created() {
     this.fetchReward();
   },
   methods: {
@@ -45,13 +42,16 @@ export default {
       return api_endpoint;
     },
     async fetchReward() {
-      await RewardApiStore.dispatch("fetchReward");
-      this.rewards = RewardApiStore.getters.rewards;
+      let res = await RewardApiStore.dispatch("fetchReward");
+      this.rewards = res.data
     },
 
     click(path) {
       this.$router.push({ path: path });
     },
+    edit(reward, index){
+      this.$router.push({name: 'EditReward', params: {id: reward.id, index:index}})
+    }
   },
 };
 </script>

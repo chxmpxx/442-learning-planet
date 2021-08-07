@@ -45,21 +45,24 @@
 
 <script>
 import AuthUser from "@/store/AuthUser";
+import Member from '../store/member'
 
 export default {
   data() {
     return {
-      histories: {},
-      a: {},
+      histories: [],
+      user: {},
+      id: ''
     };
   },
-  created() {
+  async created() {
+    this.id = AuthUser.getters.user.id
     this.createHistories();
   },
   methods: {
-    createHistories() {
-      this.a = AuthUser.getters.user;
-      this.histories = this.a.histories;
+    async createHistories() {
+        this.user = await Member.dispatch('searchMe', {id:this.id})
+        this.histories = this.user.histories
     },
   },
 };

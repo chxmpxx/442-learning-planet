@@ -6,7 +6,7 @@ import Sci from "../views/Sci.vue";
 import Leaderboard from "../views/Leaderboard";
 import Login from "../views/auth/Login.vue";
 import Register from "../views/auth/Register.vue";
-import ExchangeRewards from "../views/ExchangeRewards.vue";
+import ExchangeRewards from "../views/reward/ExchangeRewards.vue";
 import Question from "../views/question/Question";
 import MT1 from "../views/question/math/M1Table";
 import XQuestionTable from "../views/question/XQuestionTable";
@@ -24,8 +24,9 @@ import ST3 from '../views/question/sci/S3Table'
 import ST4 from '../views/question/sci/S4Table'
 import ST5 from '../views/question/sci/S5Table'
 import ST6 from '../views/question/sci/S6Table'
-import AddReward from '../views/AddReward'
-import RewardAdmin from '../views/RewardAdmin'
+import AddReward from '../views/reward/AddReward'
+import RewardAdmin from '../views/reward/RewardAdmin'
+import EditReward from '../views/reward/EditReward'
 
 Vue.use(VueRouter);
 
@@ -158,6 +159,11 @@ const routes = [
     name: "RewardAdmin",
     component: RewardAdmin,
   },
+  {
+    path: '/rewardadmin/:index/edit/:id',
+    name: 'EditReward',
+    component: EditReward
+  }
 ];
 
 const router = new VueRouter({

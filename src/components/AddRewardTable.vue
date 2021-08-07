@@ -29,28 +29,17 @@
 
 <script>
 import RewardApiStore from "@/store/RewardApi";
-import Axios from "axios";
-import AuthService from "@/services/AuthService";
+import UploadImage from '../services/UploadService'
 
 export default {
   data() {
     return {
       form: { name: "", point: "", amount: "", image: "" },
-      respone: "",
+      response: "",
+      file: ''
     };
   },
   methods: {
-    // async addReward() {
-    //   let payload = {
-    //     name: this.form.name,
-    //     point: this.form.point,
-    //     amount: this.form.amount,
-    //     image: this.form.image,
-    //   };
-    //   await RewardApiStore.dispatch("addReward", payload);
-    //   this.$swal({ title: "Add Success", icon: "success" });
-    //   this.$router.push({ path: "/rewardadmin" });
-    // },
     handleChange(event) {
       this.file = event.target.files[0];
     },
@@ -60,15 +49,17 @@ export default {
     async uploadImage() {
       const data = new FormData();
       data.append("files", this.file);
-      this.respone = await Axios.post(
-        "http://localhost:1337" + "/upload",
-        data,
-        {
-          headers: {
-            Authorization: `Bearer ${AuthService.getJwt()}`,
-          },
-        }
-      );
+      this.response = await UploadImage(data)
+
+      // this.respone = await Axios.post(
+      //   "http://localhost:1337" + "/upload",
+      //   data,
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${AuthService.getJwt()}`,
+      //     },
+      //   }
+      // );
     },
     async addReward() {
       if (this.file) {
@@ -82,7 +73,7 @@ export default {
         name: this.form.name,
         point: this.form.point,
         amount: this.form.amount,
-        image: this.respone.data[0].id,
+        image: this.response.data[0].id,
       };
       await RewardApiStore.dispatch("addReward", payload);
       this.$swal({ title: "Add Success", icon: "success" });

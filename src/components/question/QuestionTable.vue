@@ -86,7 +86,7 @@ export default {
         },
         async select(c){
             this.status = true //ตอนหลังต้องแก้เป็นเช็คว่าทำหรือยัง
-            if(c=== this.qs.ans){
+            if(c.trim()=== this.qs.ans.trim()){
                 await this.addHistory(this.path)
                 await this.addDo(this.path)
                 this.$swal("Your answer is correct!", `You get ${this.qs.point} point!`,'success')

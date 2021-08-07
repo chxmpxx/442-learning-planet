@@ -30,6 +30,7 @@ export default new Vuex.Store({
       let headers = AuthService.getApiHeader();
       let res = await Axios.get(api_endpoint + "/rewards", headers);
       commit("fetch", { res });
+      return res
     },
     async addReward({ commit }, payload) {
       let headers = AuthService.getApiHeader();
