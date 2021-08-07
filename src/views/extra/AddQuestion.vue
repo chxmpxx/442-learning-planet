@@ -1,5 +1,5 @@
 <template>
-    <div class='addq'>
+    <div class='addquestion'>
         <NavBar />
         <br><br><br><br><br><br>
         <add-extra :path="this.path" />    
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.aadq{
+.addquestion{
     font-family: 'Prompt';
     font-weight: normal;
     font-style: normal;

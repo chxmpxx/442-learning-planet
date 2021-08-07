@@ -2,24 +2,24 @@
     <div>
         <h1>ADD EXTRA QUESTION</h1>
         <div style="margin-bottom: 50px">
-            <label for="head" style="font-size: 2em">Question : </label>
+            <label for="head" style="font-size: 2em">Question : &nbsp;</label>
             <input type="text" v-model="form.q" style="width: 700px;font-size: 2em;">
         </div>
         <div class="choice" style="width: 100%">
             <div>
-                <label for="c1" style="font-size: 2em;">Choice A : </label>
+                <label for="c1" style="font-size: 2em;">Choice A : &nbsp;</label>
                 <input type="text" v-model="form.c1" style="width: 400px;font-size: 2em">
             </div>
             <div>
-                <label for="c2" style="font-size: 2em;">Choice B : </label>
+                <label for="c2" style="font-size: 2em;">Choice B : &nbsp;</label>
                 <input type="text" v-model="form.c2" style="width: 400px;font-size: 2em">
             </div>
             <div>
-                <label for="c3" style="font-size: 2em;">Choice C : </label>
+                <label for="c3" style="font-size: 2em;">Choice C : &nbsp;</label>
                 <input type="text" v-model="form.c3" style="width: 400px;font-size: 2em">
             </div>
             <div>
-                <label for="c4" style="font-size: 2em;">Choice D : </label>
+                <label for="c4" style="font-size: 2em;">Choice D : &nbsp;</label>
                 <input type="text" v-model="form.c4" style="width: 400px;font-size: 2em">
             </div>
         </div>
@@ -81,11 +81,11 @@ export default {
 
 <style lang="scss" scoped>
 h1 {
-  color: gold;
-  margin-top: -0.35em;
-  font-family: "8BITWONDERNominal";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 3em;
+    color: gold;
+    margin-top: -0.35em;
+    font-family: "8BITWONDERNominal";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 3em;
 }
 </style>
