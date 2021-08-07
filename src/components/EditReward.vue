@@ -15,6 +15,9 @@
         <div>
             <label for="type">Upload image :</label>
             <input type="file" @change="handleChange" style="padding-left:630px"/>
+            <div>
+                <img :src="getApi()+reward.image.url" id="img-preview">
+            </div>
         </div>
         <div>
             <button @click="edit">Edit</button>
@@ -30,6 +33,7 @@
 import Reward from '../store/RewardApi'
 import RewardService from '../services/RewardService'
 import UploadImage from '../services/UploadService'
+let api_endpoint = process.env.VUE_APP_USER_ENDPOINT
 export default {
     props:{
         id: '',
@@ -37,7 +41,11 @@ export default {
     },
     data(){
         return{
-            reward: {},
+            reward: {
+                image:{
+                    url: ''
+                }
+            },
             file: '',
         }
     },
@@ -45,11 +53,19 @@ export default {
         this.reward = await RewardService.getRewardById(this.id)
     },
     methods:{
+        getApi(){
+            return api_endpoint
+        },
         back(){
             this.$router.push('/rewardadmin')
         },
         handleChange(event) {
             this.file = event.target.files[0];
+            if(this.file){
+                var src = URL.createObjectURL(event.target.files[0])
+                var preview = document.getElementById('img-preview')
+                preview.src = src
+            }
         },
         async uploadImage() {
             const data = new FormData();

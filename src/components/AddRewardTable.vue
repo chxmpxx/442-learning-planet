@@ -19,7 +19,10 @@
       <div class='infobottom'>
         <div>
           <label for="type">Upload image</label>
-          <input class='fileimage' type="file" @change="handleChange" />
+          <input class='fileimage' type="file" id="img" accept="image/*" @change="handleChange" />
+          <div>
+            <img id="img-preview">
+          </div>
         </div>
         <br>
         <div class='butbottom'>
@@ -68,6 +71,11 @@ export default {
   methods: {
     handleChange(event) {
       this.file = event.target.files[0];
+      if(this.file){
+        var src = URL.createObjectURL(event.target.files[0])
+        var preview = document.getElementById('img-preview')
+        preview.src = src
+      }
     },
     cancel() {
       this.$router.push({ path: "/rewardadmin" });
