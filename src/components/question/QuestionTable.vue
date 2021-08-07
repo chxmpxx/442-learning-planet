@@ -88,11 +88,12 @@ export default {
                 await this.addHistory(this.path)
                 await this.addDo(this.path)
                 this.$swal("Your answer is correct!", `You get ${this.qs.point} point!`,'success')
+                this.$router.go(-1)
             }else{
                 await this.addDo(this.path)
                 this.$swal({title: "Your answer is incorrect!", icon: 'error'})
             }
-            this.$router.go(-1)
+            
         },
         checkDo(){
             if(this.path==='math'){
