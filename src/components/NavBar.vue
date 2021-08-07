@@ -16,7 +16,7 @@
             <a @click="click('/rewards')">Reward</a>
           </li>
           <li v-if="this.role == 3">
-            <a @click="click('/rewardadmin')">Reward</a>
+            <a @click="click('/reward-admin')">Reward</a>
           </li>
           <li v-if="this.role == 3">
             <a @click="click('/leaderboard')">Leaderboard</a>

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <br><br><br><br><br><br>
+    <br /><br /><br /><br /><br /><br />
     <h1>Add Reward</h1>
-    <br><br>
+    <br /><br />
     <div class="addform">
       <div>
         <label>&nbsp;&nbsp;Name : &nbsp;&nbsp;</label>
-        <input type="text" v-model="form.name" style="width: 1000px;"/>
+        <input type="text" v-model="form.name" style="width: 1000px" />
       </div>
       <div>
         <label>&nbsp;&nbsp;&nbsp;Point : &nbsp;&nbsp;</label>
@@ -14,15 +14,15 @@
         <label>Amount : &nbsp;</label>
         <input type="number" v-model="form.amount" />
       </div>
-        <br><br><br>
-      
-      <div class='infobottom'>
+      <br /><br /><br />
+
+      <div class="infobottom">
         <div>
           <label for="type">Upload image</label>
-          <input class='fileimage' type="file" @change="handleChange" />
+          <input class="fileimage" type="file" @change="handleChange" />
         </div>
-        <br>
-        <div class='butbottom'>
+        <br />
+        <div class="butbottom">
           <button
             @click="addReward"
             type="submit"
@@ -33,7 +33,6 @@
           <button @click="cancel">Cancel</button>
         </div>
       </div>
-      
     </div>
 
     <div class="box">
@@ -55,14 +54,14 @@
 
 <script>
 import RewardApiStore from "@/store/RewardApi";
-import Upload from '../services/UploadService'
+import Upload from "../services/UploadService";
 
 export default {
   data() {
     return {
       form: { name: "", point: "", amount: "", image: "" },
       response: "",
-      file: ''
+      file: "",
     };
   },
   methods: {
@@ -70,12 +69,12 @@ export default {
       this.file = event.target.files[0];
     },
     cancel() {
-      this.$router.push({ path: "/rewardadmin" });
+      this.$router.push({ path: "/reward-admin" });
     },
     async uploadImage() {
       const data = new FormData();
       data.append("files", this.file);
-      this.response = await Upload.uploadImage(data)
+      this.response = await Upload.uploadImage(data);
 
       // this.respone = await Axios.post(
       //   "http://localhost:1337" + "/upload",
@@ -102,7 +101,7 @@ export default {
       };
       await RewardApiStore.dispatch("addReward", payload);
       this.$swal({ title: "Add Success", icon: "success" });
-      this.$router.push({ path: "/rewardadmin" });
+      this.$router.push({ path: "/reward-admin" });
     },
   },
 };
@@ -117,7 +116,7 @@ h1 {
   font-style: normal;
   font-size: 3em;
 }
-.addform{
+.addform {
   text-align: left;
   background-color: rgba(255, 255, 255, 0.9);
   border-style: solid;
@@ -127,26 +126,26 @@ h1 {
   margin: 0.5em 7em 5em 7em;
   padding: 2em 5em 2em 2em;
 }
-label{
+label {
   font-size: 2em;
   text-align: left;
   margin-left: 2em;
 }
-input{
+input {
   width: 400px;
   font-size: 2em;
   line-height: 1.6em;
   text-align: left;
   margin-top: 1em;
 }
-.infobottom{
+.infobottom {
   text-align: center;
 }
-.fileimage{
+.fileimage {
   margin-left: 23em;
   font-size: 1.5em;
 }
-button{
+button {
   font-size: 1.5em;
   border-radius: 5px;
   border-width: 1px;
@@ -154,13 +153,13 @@ button{
   height: 2em;
   margin: 0.5em 1em 0.5em 0em;
 }
-button:hover{
+button:hover {
   background-color: tomato;
   color: #ffffff;
   border-color: #ffffff;
   transition: 0.5s;
 }
-.butbottom{
+.butbottom {
   margin-left: 4em;
 }
 

@@ -15,18 +15,18 @@ import Wait from "../views/extra/WaitApprove";
 import ExtraSelect from "../views/extra/Extra";
 import Check from "../views/extra/Check";
 import AddExtra from "../views/extra/AddQuestion";
-import MT2 from '../views/question/math/M2Table'
-import MT3 from '../views/question/math/M3Table'
-import MT4 from '../views/question/math/M4Table'
-import ST1 from '../views/question/sci/S1Table'
-import ST2 from '../views/question/sci/S2Table'
-import ST3 from '../views/question/sci/S3Table'
-import ST4 from '../views/question/sci/S4Table'
-import ST5 from '../views/question/sci/S5Table'
-import ST6 from '../views/question/sci/S6Table'
-import AddReward from '../views/reward/AddReward'
-import RewardAdmin from '../views/reward/RewardAdmin'
-import EditReward from '../views/reward/EditReward'
+import MT2 from "../views/question/math/M2Table";
+import MT3 from "../views/question/math/M3Table";
+import MT4 from "../views/question/math/M4Table";
+import ST1 from "../views/question/sci/S1Table";
+import ST2 from "../views/question/sci/S2Table";
+import ST3 from "../views/question/sci/S3Table";
+import ST4 from "../views/question/sci/S4Table";
+import ST5 from "../views/question/sci/S5Table";
+import ST6 from "../views/question/sci/S6Table";
+import AddReward from "../views/reward/AddReward";
+import RewardAdmin from "../views/reward/RewardAdmin";
+import EditReward from "../views/reward/EditReward";
 
 Vue.use(VueRouter);
 
@@ -150,20 +150,20 @@ const routes = [
     component: AddExtra,
   },
   {
-    path: "/addreward",
+    path: "/add-reward",
     name: "AddReward",
     component: AddReward,
   },
   {
-    path: "/rewardadmin",
+    path: "/reward-admin",
     name: "RewardAdmin",
     component: RewardAdmin,
   },
   {
-    path: '/rewardadmin/:index/edit/:id',
-    name: 'EditReward',
-    component: EditReward
-  }
+    path: "/reward-admin/:index/edit/:id",
+    name: "EditReward",
+    component: EditReward,
+  },
 ];
 
 const router = new VueRouter({

@@ -1,104 +1,101 @@
 <template>
-    <div >
-        <div style="padding-top: 100px">
-            <label for="name">Name:</label>
-            <input type="text" v-model='reward.name'>
-        </div>
-        <div>
-            <label for="point">Point:</label>
-            <input type="number" v-model="reward.point">
-        </div>
-        <div>
-            <label for="stock">Stock: </label>
-            <input type="number" v-model="reward.amount">
-        </div>
-        <div>
-            <label for="type">Upload image :</label>
-            <input type="file" @change="handleChange" style="padding-left:630px"/>
-        </div>
-        <div>
-            <button @click="edit">Edit</button>
-            <button @click="deleteR">Delete</button>
-        </div>
-        <div>
-            <button @click="back">Back</button>
-        </div>
+  <div>
+    <div style="padding-top: 100px">
+      <label for="name">Name:</label>
+      <input type="text" v-model="reward.name" />
     </div>
+    <div>
+      <label for="point">Point:</label>
+      <input type="number" v-model="reward.point" />
+    </div>
+    <div>
+      <label for="stock">Stock: </label>
+      <input type="number" v-model="reward.amount" />
+    </div>
+    <div>
+      <label for="type">Upload image :</label>
+      <input type="file" @change="handleChange" style="padding-left: 630px" />
+    </div>
+    <div>
+      <button @click="edit">Edit</button>
+      <button @click="deleteR">Delete</button>
+    </div>
+    <div>
+      <button @click="back">Back</button>
+    </div>
+  </div>
 </template>
 
 <script>
-import Reward from '../store/RewardApi'
-import RewardService from '../services/RewardService'
-import UploadImage from '../services/UploadService'
+import Reward from "../store/RewardApi";
+import RewardService from "../services/RewardService";
+import UploadImage from "../services/UploadService";
 export default {
-    props:{
-        id: '',
-        index: ''
+  props: {
+    id: "",
+    index: "",
+  },
+  data() {
+    return {
+      reward: {},
+      file: "",
+    };
+  },
+  async created() {
+    this.reward = await RewardService.getRewardById(this.id);
+  },
+  methods: {
+    back() {
+      this.$router.push("/reward-admin");
     },
-    data(){
-        return{
-            reward: {},
-            file: '',
-        }
+    handleChange(event) {
+      this.file = event.target.files[0];
     },
-    async created(){
-        this.reward = await RewardService.getRewardById(this.id)
+    async uploadImage() {
+      const data = new FormData();
+      data.append("files", this.file);
+      this.response = await UploadImage(data);
     },
-    methods:{
-        back(){
-            this.$router.push('/rewardadmin')
-        },
-        handleChange(event) {
-            this.file = event.target.files[0];
-        },
-        async uploadImage() {
-            const data = new FormData();
-            data.append("files", this.file);
-            this.response = await UploadImage(data)
-        },
-        async edit() {
-            if (this.file) {
-                await this.uploadImage();
-            }
-            this.putReward();
-        },
-        async deleteR(){
-            await Reward.dispatch('deleteReward',{id:this.id})
-            this.$router.push('/rewardadmin')
-            this.$swal({title:'Delete Success', icon: 'success'})
-            
-        },
-        async putReward() {
-            if(this.file){
-                let payload = {
-                    name: this.reward.name,
-                    point: this.reward.point,
-                    amount: this.reward.amount,
-                    image: this.respone.data[0].id,
-                    id: this.id,
-                    index: this.index
-                };
-                await Reward.dispatch("editRewardWithImage", payload);
-                this.$swal({ title: "Edit Success", icon: "success" });
-                this.$router.push({ path: "/rewardadmin" });
-            }else{
-                let payload = {
-                    name: this.reward.name,
-                    point: this.reward.point,
-                    amount: this.reward.amount,
-                    id: this.id,
-                    index: this.index
-                }
-                await Reward.dispatch("editReward", payload);
-                this.$swal({ title: "Edit Success", icon: "success" });
-                this.$router.push({ path: "/rewardadmin" });
-            }
-        },
-    }
-
-}
+    async edit() {
+      if (this.file) {
+        await this.uploadImage();
+      }
+      this.putReward();
+    },
+    async deleteR() {
+      await Reward.dispatch("deleteReward", { id: this.id });
+      this.$router.push("/reward-admin");
+      this.$swal({ title: "Delete Success", icon: "success" });
+    },
+    async putReward() {
+      if (this.file) {
+        let payload = {
+          name: this.reward.name,
+          point: this.reward.point,
+          amount: this.reward.amount,
+          image: this.respone.data[0].id,
+          id: this.id,
+          index: this.index,
+        };
+        await Reward.dispatch("editRewardWithImage", payload);
+        this.$swal({ title: "Edit Success", icon: "success" });
+        this.$router.push({ path: "/reward-admin" });
+      } else {
+        let payload = {
+          name: this.reward.name,
+          point: this.reward.point,
+          amount: this.reward.amount,
+          id: this.id,
+          index: this.index,
+        };
+        await Reward.dispatch("editReward", payload);
+        this.$swal({ title: "Edit Success", icon: "success" });
+        this.$router.push({ path: "/reward-admin" });
+      }
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>
