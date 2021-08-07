@@ -28,6 +28,7 @@ export default {
 
 <style lang="scss" scoped>
 .addquestion{
+    //font-family: "Montserrat", sans-serif;
     font-family: 'Prompt';
     font-weight: normal;
     font-style: normal;

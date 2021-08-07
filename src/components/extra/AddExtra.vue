@@ -1,35 +1,56 @@
 <template>
     <div>
         <h1>ADD EXTRA QUESTION</h1>
-        <div style="margin-bottom: 50px">
-            <label for="head" style="font-size: 2em">Question : &nbsp;</label>
-            <input type="text" v-model="form.q" style="width: 700px;font-size: 2em;">
+        <br><br>
+        <div class='quiz'>
+            <div style="margin-bottom: 50px">
+                <label for="head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question : &nbsp;</label>
+                <input type="text" v-model="form.q" style="width: 1050px;">
+            </div>
+            <div class="choice" style="width: 100%">
+                <div>
+                    <label for="c1">&nbsp;Choice A : &nbsp;</label>
+                    <input type="text" v-model="form.c1" style="width: 400px;">
+                </div>
+                <div>
+                    <label for="c2">&nbsp;Choice B : &nbsp;</label>
+                    <input type="text" v-model="form.c2" style="width: 400px;">
+                </div>
+                <div>
+                    <label for="c3">&nbsp;Choice C : &nbsp;</label>
+                    <input type="text" v-model="form.c3" style="width: 400px;">
+                </div>
+                <div>
+                    <label for="c4">&nbsp;Choice D : &nbsp;</label>
+                    <input type="text" v-model="form.c4" style="width: 400px;">
+                </div>
+            </div>
+            <br><br>
+            <div class='answer'>
+                <div>
+                    <label for="ans" style="">Answer : &nbsp;</label>
+                    <input type="text" v-model="form.ans" style="width: 400px;">
+                </div>
+                <div>
+                    <button style="width: 130px" @click="send">SEND</button>
+                    <button style="width: 130px" @click="back">CANCEL</button>
+                </div>
+            </div>
         </div>
-        <div class="choice" style="width: 100%">
-            <div>
-                <label for="c1" style="font-size: 2em;">Choice A : &nbsp;</label>
-                <input type="text" v-model="form.c1" style="width: 400px;font-size: 2em">
-            </div>
-            <div>
-                <label for="c2" style="font-size: 2em;">Choice B : &nbsp;</label>
-                <input type="text" v-model="form.c2" style="width: 400px;font-size: 2em">
-            </div>
-            <div>
-                <label for="c3" style="font-size: 2em;">Choice C : &nbsp;</label>
-                <input type="text" v-model="form.c3" style="width: 400px;font-size: 2em">
-            </div>
-            <div>
-                <label for="c4" style="font-size: 2em;">Choice D : &nbsp;</label>
-                <input type="text" v-model="form.c4" style="width: 400px;font-size: 2em">
-            </div>
-        </div>
-        <div style="margin: 50px 0px">
-            <label for="ans" style="font-size: 2em;">Answer: </label>
-            <input type="text" v-model="form.ans" style="width: 400px;font-size: 2em">
-        </div>
-        <div>
-            <button style="font-size: 2em;width: 130px" @click="send">SEND</button>
-            <button style="font-size: 2em;width: 130px" @click="back">CANCEL</button>
+        
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
     </div>
 </template>
@@ -87,5 +108,145 @@ h1 {
     font-weight: normal;
     font-style: normal;
     font-size: 3em;
+}
+.quiz{
+    color: #4B4B4B;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-style: solid;
+    border-width: 0.3em;
+    border-radius: 15px;
+    border-color: tomato;
+    margin: 0em 7em 5em 7em;
+    padding: 2em 2em 2em 2em;
+    text-align: left;
+}
+.choice{
+    margin-top: 0.5em;
+    padding-left: 2em;
+}
+label{
+    font-size: 1.5em;
+    line-height: 1.6em;
+    text-align: left;
+}
+input{
+    font-size: 1.5em;
+    line-height: 1.6em;
+    text-align: left;
+}
+.answer{
+    text-align: center;
+}
+button{
+    font-size: 1.5em;
+    border-radius: 5px;
+    border-width: 1px;
+    width: 6.4em;
+    height: 2em;
+    margin: 0.5em 1em 0.5em 0em;
+}
+button:hover{
+    background-color: tomato;
+    color: #ffffff;
+    border-color: #ffffff;
+    transition: 0.5s;
+}
+
+// ------------------Block Rotation--------------------
+.box div {
+  height: 6px;
+  width: 6px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  position: absolute;
+}
+.box div:nth-child(1) {
+  top: 12%;
+  left: 42%;
+  animation: animate 10s linear infinite;
+}
+.box div:nth-child(2) {
+  top: 70%;
+  left: 50%;
+  animation: animate 7s linear infinite;
+}
+.box div:nth-child(3) {
+  top: 17%;
+  left: 6%;
+  animation: animate 9s linear infinite;
+}
+.box div:nth-child(4) {
+  top: 20%;
+  left: 60%;
+  animation: animate 8s linear infinite;
+}
+.box div:nth-child(5) {
+  top: 67%;
+  left: 10%;
+  animation: animate 6s linear infinite;
+}
+.box div:nth-child(6) {
+  top: 80%;
+  left: 70%;
+  animation: animate 7s linear infinite;
+}
+.box div:nth-child(7) {
+  top: 60%;
+  left: 80%;
+  animation: animate 9s linear infinite;
+}
+.box div:nth-child(8) {
+  top: 32%;
+  left: 25%;
+  animation: animate 10s linear infinite;
+}
+.box div:nth-child(9) {
+  top: 90%;
+  left: 25%;
+  animation: animate 9s linear infinite;
+}
+.box div:nth-child(10) {
+  top: 20%;
+  left: 80%;
+  animation: animate 6s linear infinite;
+}
+.box div:nth-child(11) {
+  top: 40%;
+  left: 90%;
+  animation: animate 10s linear infinite;
+}
+.box div:nth-child(12) {
+  top: 35%;
+  left: 45%;
+  animation: animate 7s linear infinite;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadede {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.35;
+  }
+}
+@keyframes animate {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5) translateY(-45px) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2) translateY(-90px) rotate(360deg);
+    opacity: 0;
+  }
 }
 </style>

@@ -24,14 +24,16 @@
             </div>
         </div>
         
-        <div>
-            <button v-if="status" @click="back">BACK</button>
+        <div class='answer'>
+            <div>
+                <h2 v-if="status">You already do this question!</h2>
+            </div>
+            <div>
+                <h2 v-if="status">Answer is <span class='ans'>{{ qs.ans}}</span></h2>
+            </div>  
         </div>
         <div>
-            <h2 v-if="status">You already do this question!</h2>
-        </div>
-        <div>
-            <h2 v-if="status">Answer is {{ qs.ans}}</h2>
+            <button class='back' v-if="status" @click="back">BACK</button>
         </div>
     </div>
 </template>
@@ -184,6 +186,10 @@ export default {
     margin: 0em 7em 5em 7em;
     padding: 1em 2em 2.5em 2em;
     text-align: left;
+    border-style: solid;
+    border-width: 0.3em;
+    border-radius: 15px;
+    border-color: tomato;
 }
 .choice{
     margin-top: 0.5em;
@@ -198,11 +204,29 @@ button{
     transition: 0.5s;
     border-width: 1px;
 }
+.back{
+    font-size: 1.5em;
+    border-radius: 5px;
+    border-width: 1px;
+    width: 6.4em;
+    height: 2em;
+    margin: -2em 1em 1.5em 0em;
+}
 button:hover{
     background-color: tomato;
     color: #ffffff;
     border-color: #ffffff;
     transition: 0.5s;
+}
+.answer{
+    color:#fff;
+    text-shadow: 0 0 20px #fff;
+    margin-top: -4em;
+    margin-bottom: 3.5em;
+    font-size: 0.8em;
+}
+.ans{
+    color:gold;
 }
 h1{
   margin-top: 0em;
