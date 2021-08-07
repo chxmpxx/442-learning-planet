@@ -59,17 +59,46 @@ export default new Vuex.Store({
         commit("edit",  payload1);
       }
     },
-    // async editReward({ commit }, payload) {
-    //   let body = {
-    //     name: payload.name,
-    //     point: payload.point,
-    //     image: payload.image,
-    //     amount: payload.amount,
-    //   };
-    //   let headers = AuthService.getApiHeader();
-    //   await Axios.put(api_endpoint + "/rewards/" + id, body, headers);
-    //   commit("edit", { payload });
-    // },
+    async editRewardWithImage({ commit }, payload) {
+        let url = `${api_endpoint}/rewards/${payload.id}`
+        let body = {
+          name: payload.name,
+          point: payload.point,
+          image: payload.image,
+          amount: payload.amount
+        }
+        let headers = AuthService.getApiHeader()
+        let res  = await Axios.put(url, body, headers)
+        if(res.status===200){
+          let payload1 = {
+            data: res.data,
+            index: payload.index
+          }
+          commit('edit', payload1)
+        }
+    },
+    async editReward({commit}, payload){
+        let url = `${api_endpoint}/rewards/${payload.id}`
+        let body = {
+          name: payload.name,
+          point: payload.point,
+          amount: payload.amount
+        }
+        let headers = AuthService.getApiHeader()
+        let res  = await Axios.put(url, body, headers)
+        if(res.status===200){
+          let payload1 = {
+            data: res.data,
+            index: payload.index
+          }
+          commit('edit', payload1)
+        }
+    },
+    async deleteReward({commit}, {id}){
+        let url = `${api_endpoint}/rewards/${id}`
+        let headers = AuthService.getApiHeader()
+        await Axios.delete(url, headers)
+    }
   },
   modules: {},
 });

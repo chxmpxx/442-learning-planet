@@ -55,7 +55,7 @@
 
 <script>
 import RewardApiStore from "@/store/RewardApi";
-import UploadImage from '../services/UploadService'
+import Upload from '../services/UploadService'
 
 export default {
   data() {
@@ -75,7 +75,7 @@ export default {
     async uploadImage() {
       const data = new FormData();
       data.append("files", this.file);
-      this.response = await UploadImage(data)
+      this.response = await Upload.uploadImage(data)
 
       // this.respone = await Axios.post(
       //   "http://localhost:1337" + "/upload",
@@ -92,7 +92,6 @@ export default {
         await this.uploadImage();
       }
       this.postReward();
-      await RewardApiStore.dispatch("fetchReward");
     },
     async postReward() {
       let payload = {

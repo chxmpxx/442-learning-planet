@@ -1,6 +1,6 @@
 <template>
-    <div style="padding-top: 100px">
-        <div>
+    <div >
+        <div style="padding-top: 100px">
             <label for="name">Name:</label>
             <input type="text" v-model='reward.name'>
         </div>
@@ -14,11 +14,11 @@
         </div>
         <div>
             <label for="type">Upload image :</label>
-            <input type="file" @change="handleChange" />
+            <input type="file" @change="handleChange" style="padding-left:630px"/>
         </div>
         <div>
             <button @click="edit">Edit</button>
-            <button>Delete</button>
+            <button @click="deleteR">Delete</button>
         </div>
         <div>
             <button @click="back">Back</button>
@@ -60,19 +60,39 @@ export default {
             if (this.file) {
                 await this.uploadImage();
             }
-            this.postReward();
-            await Reward.dispatch("fetchReward");
-            },
-            async postReward() {
-            let payload = {
-                name: this.form.name,
-                point: this.form.point,
-                amount: this.form.amount,
-                image: this.respone.data[0].id,
-            };
-            await Reward.dispatch("addReward", payload);
-            this.$swal({ title: "Add Success", icon: "success" });
-            this.$router.push({ path: "/rewardadmin" });
+            this.putReward();
+        },
+        async deleteR(){
+            await Reward.dispatch('deleteReward',{id:this.id})
+            this.$router.push('/rewardadmin')
+            this.$swal({title:'Delete Success', icon: 'success'})
+            
+        },
+        async putReward() {
+            if(this.file){
+                let payload = {
+                    name: this.reward.name,
+                    point: this.reward.point,
+                    amount: this.reward.amount,
+                    image: this.respone.data[0].id,
+                    id: this.id,
+                    index: this.index
+                };
+                await Reward.dispatch("editRewardWithImage", payload);
+                this.$swal({ title: "Edit Success", icon: "success" });
+                this.$router.push({ path: "/rewardadmin" });
+            }else{
+                let payload = {
+                    name: this.reward.name,
+                    point: this.reward.point,
+                    amount: this.reward.amount,
+                    id: this.id,
+                    index: this.index
+                }
+                await Reward.dispatch("editReward", payload);
+                this.$swal({ title: "Edit Success", icon: "success" });
+                this.$router.push({ path: "/rewardadmin" });
+            }
         },
     }
 

@@ -87,6 +87,7 @@
             async disApprove(){
                 await Question.dispatch('deleteQuestion',{id:this.id})
                 this.$router.push('/wait')
+                this.$swal({title:'This question is disapprove',icon:'error'})
             },
             async approve(){
                 let payload = {
@@ -110,6 +111,7 @@
                 await History.dispatch('addHistory', payload1)
                 await Question.dispatch('deleteQuestion',{id:this.id})
                 this.$router.push('/wait')
+                this.$swal({title:'This question is approve',icon:'success'})
             }
         }
     }
