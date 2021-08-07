@@ -14,19 +14,19 @@
           </section>
           <div class="input-container name">
             <label>Username</label>
-            <input type="username" v-model="form.username" />
+            <input type="username" v-model="form.username" placeholder="Username"/>
           </div>
           <div class="input-container email">
             <label>Email</label>
-            <input type="email" v-model="form.email" />
+            <input type="email" v-model="form.email" placeholder="Email"/>
           </div>
           <div class="input-container password">
             <label>Password</label>
-            <input type="password" v-model="form.password" />
+            <input type="password" v-model="form.password" placeholder="Password"/>
           </div>
           <div class="input-container confirmedPassword">
             <label>Confirm Password</label>
-            <input type="password" v-model="confirm_password" />
+            <input type="password" v-model="confirm_password" placeholder="Confirm Password"/>
             <i class="far fa-eye-slash"></i>
           </div>
           <button
