@@ -1,37 +1,41 @@
 <template>
     <div>
         <h1>ADD EXTRA QUESTION</h1>
-        <br><br>
+        <br><br><br>
         <div class='quiz'>
-            <div style="margin-bottom: 50px">
-                <label for="head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question : &nbsp;</label>
+            <div>
+                <label for="head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question : &nbsp;</label>
                 <input type="text" v-model="form.q" style="width: 1050px;">
             </div>
+            <br>
             <div class="choice" style="width: 100%">
                 <div>
-                    <label for="c1">&nbsp;Choice A : &nbsp;</label>
+                    <label for="c1">&nbsp;&nbsp;&nbsp;Choice A : &nbsp;</label>
                     <input type="text" v-model="form.c1" style="width: 400px;">
-                </div>
-                <div>
-                    <label for="c2">&nbsp;Choice B : &nbsp;</label>
+                    
+                    <label for="c2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Choice B : &nbsp;
+                    </label>
                     <input type="text" v-model="form.c2" style="width: 400px;">
                 </div>
                 <div>
-                    <label for="c3">&nbsp;Choice C : &nbsp;</label>
+                    <label for="c3">&nbsp;&nbsp;&nbsp;Choice C : &nbsp;</label>
                     <input type="text" v-model="form.c3" style="width: 400px;">
-                </div>
-                <div>
-                    <label for="c4">&nbsp;Choice D : &nbsp;</label>
+                    
+                    <label for="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Choice D : &nbsp;
+                    </label>
                     <input type="text" v-model="form.c4" style="width: 400px;">
                 </div>
+ 
             </div>
-            <br><br>
+            <br>
             <div class='answer'>
                 <div>
                     <label for="ans" style="">Answer : &nbsp;</label>
                     <input type="text" v-model="form.ans" style="width: 400px;">
                 </div>
-                <div>
+                <div class='butbottom'>
                     <button style="width: 130px" @click="send">SEND</button>
                     <button style="width: 130px" @click="back">CANCEL</button>
                 </div>
@@ -102,55 +106,58 @@ export default {
 
 <style lang="scss" scoped>
 h1 {
-    color: gold;
-    margin-top: -0.35em;
-    font-family: "8BITWONDERNominal";
-    font-weight: normal;
-    font-style: normal;
-    font-size: 3em;
+  color: gold;
+  margin-top: -0.35em;
+  font-family: "8BITWONDERNominal";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 3em;
 }
 .quiz{
-    color: #4B4B4B;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-style: solid;
-    border-width: 0.3em;
-    border-radius: 15px;
-    border-color: tomato;
-    margin: 0em 7em 5em 7em;
-    padding: 2em 2em 2em 2em;
-    text-align: left;
+  color: #4B4B4B;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-style: solid;
+  border-width: 0.3em;
+  border-radius: 15px;
+  border-color: tomato;
+  margin: 0em 7em 5em 7em;
+  padding: 2em 2em 2em 2em;
+  text-align: left;
 }
 .choice{
-    margin-top: 0.5em;
-    padding-left: 2em;
+  padding-left: 2em;
 }
 label{
-    font-size: 1.5em;
-    line-height: 1.6em;
-    text-align: left;
+  font-size: 1.5em;
+  line-height: 1.6em;
+  text-align: left;
+  margin-top: 1em;
 }
 input{
-    font-size: 1.5em;
-    line-height: 1.6em;
-    text-align: left;
+  font-size: 1.5em;
+  line-height: 1.6em;
+  text-align: left;
 }
 .answer{
-    text-align: center;
+  text-align: center;
 }
 button{
-    font-size: 1.5em;
-    border-radius: 5px;
-    border-width: 1px;
-    width: 6.4em;
-    height: 2em;
-    margin: 0.5em 1em 0.5em 0em;
+  font-size: 1.5em;
+  border-radius: 5px;
+  border-width: 1px;
+  width: 6.4em;
+  height: 2em;
+  margin: 0.5em 1em 0.5em 0em;
 }
 button:hover{
-    background-color: tomato;
-    color: #ffffff;
-    border-color: #ffffff;
-    transition: 0.5s;
+  background-color: tomato;
+  color: #ffffff;
+  border-color: #ffffff;
+  transition: 0.5s;
 }
+// .butbottom{
+//   margin-left: 7em;
+// }
 
 // ------------------Block Rotation--------------------
 .box div {
