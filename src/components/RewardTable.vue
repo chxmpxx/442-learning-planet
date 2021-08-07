@@ -77,25 +77,30 @@ export default {
       this.current_point = get - use;
     },
     async exchange(reward, index) {
-      let date = moment().toISOString();
-      let payload1 = {
-        date: moment(date).format("YYYY-MM-DD"),
-        heading: `Buy a ${reward.name} ${reward.point}`,
-        point: "" + reward.point,
-        type: "use",
-        id: this.user.id,
-      };
-      await HistoryApiStore.dispatch("addHistory", payload1);
-      reward.amount -= 1;
-      let payload = {
-        amount: "" + reward.amount,
-        id: reward.id,
-        index: index,
-      };
-      await RewardApiStore.dispatch("exchangeReward", payload);
-      this.id = await AuthUser.getters.user.id;
-      this.user = await Member.dispatch("searchMe", { id: this.id });
-      this.calPoint();
+      if (this.current_point >= reward.point) {
+        let date = moment().toISOString();
+        let payload1 = {
+          date: moment(date).format("YYYY-MM-DD"),
+          heading: `Buy a ${reward.name} ${reward.point}`,
+          point: "" + reward.point,
+          type: "use",
+          id: this.user.id,
+        };
+        await HistoryApiStore.dispatch("addHistory", payload1);
+        reward.amount -= 1;
+        let payload = {
+          amount: "" + reward.amount,
+          id: reward.id,
+          index: index,
+        };
+        await RewardApiStore.dispatch("exchangeReward", payload);
+        this.id = await AuthUser.getters.user.id;
+        this.user = await Member.dispatch("searchMe", { id: this.id });
+        this.calPoint();
+        this.$swal("Exchange Success", `You got ${reward.name}`, "success");
+      } else {
+        this.$swal("Exchange Failed", "Not enough points", "error");
+      }
     },
   },
 };
