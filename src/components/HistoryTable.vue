@@ -74,7 +74,7 @@ export default {
   border-radius: 15px;
   border-color: gold;
   padding: 1.5em 0em 1.5em 0em;
-  margin: 0em 20em 0em 20em;
+  margin: 0em 12em 0em 12em;
 }
 h1 {
   color: gold;
@@ -90,7 +90,7 @@ th, td {
 }
 th{
   font-size: 24px;
-  padding: 0.5em 3em 0.5em 3em;
+  padding: 0.5em 4em 0.5em 4em;
 }
 td{
   font-size: 20px;
