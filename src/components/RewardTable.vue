@@ -13,11 +13,8 @@
           <div>{{ reward.point }} points</div>
           <div>Stock : {{ reward.amount }}</div>
           <button
-            @click="
-              exchange(
-                reward,index
-              )
-            "
+            @click="exchange(reward, index)"
+            :disabled="reward.amount == 0"
           >
             Exchange
           </button>
@@ -32,7 +29,7 @@ import RewardApiStore from "@/store/RewardApi";
 import AuthUser from "@/store/AuthUser";
 import moment from "moment";
 import HistoryApiStore from "@/store/HistoryApi";
-import Member from '../store/member'
+import Member from "../store/member";
 let api_endpoint = process.env.VUE_APP_USER_ENDPOINT || "http://localhost:1337";
 export default {
   data() {
@@ -40,15 +37,15 @@ export default {
       rewards: [],
       user: {},
       current_point: 0,
-      id:''
+      id: "",
     };
   },
 
   async created() {
     this.fetchReward();
-    this.id = JSON.parse(localStorage.getItem('auth-user')).user.id
-    this.user = await  Member.dispatch('searchMe', {id:this.id})
-    this.calPoint()
+    this.id = JSON.parse(localStorage.getItem("auth-user")).user.id;
+    this.user = await Member.dispatch("searchMe", { id: this.id });
+    this.calPoint();
   },
   methods: {
     getApi() {
@@ -67,39 +64,39 @@ export default {
       await RewardApiStore.dispatch("fetchReward");
       this.rewards = RewardApiStore.getters.rewards;
     },
-    calPoint(){
-      let get = 0
-      let use = 0
-      this.user.histories.forEach(element => {
-          if(element.type==='get'){
-            get += parseInt(element.point)
-          }else{
-            use += parseInt(element.point)
-          }
+    calPoint() {
+      let get = 0;
+      let use = 0;
+      this.user.histories.forEach((element) => {
+        if (element.type === "get") {
+          get += parseInt(element.point);
+        } else {
+          use += parseInt(element.point);
+        }
       });
-      this.current_point = get - use
+      this.current_point = get - use;
     },
-    async exchange(reward, index){
-      let date = moment().toISOString()
+    async exchange(reward, index) {
+      let date = moment().toISOString();
       let payload1 = {
-        date: moment(date).format('YYYY-MM-DD'),
+        date: moment(date).format("YYYY-MM-DD"),
         heading: `Buy a ${reward.name} ${reward.point}`,
-        point: ''+reward.point,
-        type: 'use',
-        id: this.user.id
-      }
-      await HistoryApiStore.dispatch('addHistory', payload1)
-      reward.amount -=1
+        point: "" + reward.point,
+        type: "use",
+        id: this.user.id,
+      };
+      await HistoryApiStore.dispatch("addHistory", payload1);
+      reward.amount -= 1;
       let payload = {
-        amount: ''+reward.amount, 
+        amount: "" + reward.amount,
         id: reward.id,
-        index: index
-      }
-      await RewardApiStore.dispatch('exchangeReward', payload)
-      this.id = await AuthUser.getters.user.id
-      this.user = await  Member.dispatch('searchMe', {id:this.id})
-      this.calPoint()
-    }
+        index: index,
+      };
+      await RewardApiStore.dispatch("exchangeReward", payload);
+      this.id = await AuthUser.getters.user.id;
+      this.user = await Member.dispatch("searchMe", { id: this.id });
+      this.calPoint();
+    },
   },
 };
 </script>

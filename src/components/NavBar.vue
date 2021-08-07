@@ -18,11 +18,13 @@
           <li v-if="this.role == 3">
             <a @click="click('/rewardadmin')">Reward</a>
           </li>
-          <li>
+          <li v-if="this.role == 3">
             <a @click="click('/leaderboard')">Leaderboard</a>
           </li>
-          <li><a @click="click('/history')">History</a></li>
-          <li><a @click="click('/wait')">Wait</a></li>
+          <li v-if="this.role == 1">
+            <a @click="click('/history')">History</a>
+          </li>
+          <li v-if="this.role == 3"><a @click="click('/wait')">Wait</a></li>
           <li><a @click="click('/')">Logout</a></li>
         </ul>
       </div>

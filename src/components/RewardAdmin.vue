@@ -14,6 +14,7 @@
           <div>{{ reward.point }} points</div>
           <div>Stock : {{ reward.amount }}</div>
           <button>Edit</button>
+          <button>Delete</button>
         </div>
       </div>
     </div>

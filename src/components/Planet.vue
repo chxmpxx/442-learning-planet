@@ -1,30 +1,30 @@
 <template>
   <div class="mainplanet">
-    <div class="planet">
-        <img
-          class="planet1"
-          src="../assets/planet1.png"
-          alt="planet1"
-          width="15%"
-          @click="clickM('math')"
-        />
-        <img
-          class="planet2"
-          src="../assets/planet2.png"
-          alt="planet2"
-          width="15%"
-          @click="clickS('sci')"
-        />
-        <img
-          class="planet3"
-          src="../assets/planet3.png"
-          alt="planet3"
-          width="22%"
-          @click="clickX('extra')"
-        />
+    <div class="planet" v-if="this.role !== 3">
+      <img
+        class="planet1"
+        src="../assets/planet1.png"
+        alt="planet1"
+        width="15%"
+        @click="clickM('math')"
+      />
+      <img
+        class="planet2"
+        src="../assets/planet2.png"
+        alt="planet2"
+        width="15%"
+        @click="clickS('sci')"
+      />
+      <img
+        class="planet3"
+        src="../assets/planet3.png"
+        alt="planet3"
+        width="22%"
+        @click="clickX('extra')"
+      />
     </div>
 
-    <div class="textinfo">
+    <div class="textinfo" v-if="this.role !== 3">
       <h1 id="info">CHOOSE YOUR OWN ADVENTURE</h1>
     </div>
     <img
@@ -70,18 +70,30 @@
 </template>
 
 <script>
+import AuthUser from "@/store/AuthUser";
 export default {
-  methods:{
-    clickM(path){
-      this.$router.push({name: 'Maths', params:{path: path}})
+  data() {
+    return { role: "" };
+  },
+  mounted() {
+    this.getRole();
+  },
+  methods: {
+    clickM(path) {
+      this.$router.push({ name: "Maths", params: { path: path } });
     },
-    clickS(path){
-      this.$router.push({name: 'Sci', params: {path:path}})
+    clickS(path) {
+      this.$router.push({ name: "Sci", params: { path: path } });
     },
-    clickX(path){
-      this.$router.push({name: 'ExtraSelect', params: {path:path}})
-    }
-  }
+    clickX(path) {
+      this.$router.push({ name: "ExtraSelect", params: { path: path } });
+    },
+    async getRole() {
+      let res = AuthUser.getters.user.role.id;
+
+      this.role = res;
+    },
+  },
 };
 </script>
 
