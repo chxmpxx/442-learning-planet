@@ -1,19 +1,29 @@
-# learning-planet
+# Learning planet
 
 ## Project setup
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Run serve
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## How to use
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+---
+
+### สำหรับUserทั่วไป
+
+- หากยังไม่มีบัญชีใช้ ให้กดสมัครบัญชีที่ Sign Up กรอกข้อมูลให้ครบแล้วกด Register แล้วจะเข้าไปหน้าHomeได้เลย
+
+* แต่ถ้ามีบัญชีอยู่แล้วให้กรอกชื่อ User และ Password กด Login เข้าไปเลย
+* ตัวอย่าง User สำหรับทดลองใช้
+  - Username : user1
+  - Password : 44914
+* ระบบของUserทั่วไปมีดังนี้
+  - หากต้องการกลับหน้า Home ให้กดที่โลโก้ทางมุมซ้ายบนหรือคำว่า Learning Planet
+  - ที่หน้า Home สามารถไปทำโจทย์เพื่อเก็บแต้มได้ โดยดาวทางซ้ายจะเป็นโจทย์คณิตศาสตร์, ดาวตรงกลางจะเป็นโจทย์คณิตศาสตร์ โดยดาวทั้งสองดวงนี้กดเข้าไปจะสามารถเลือกหัวข้อได้
