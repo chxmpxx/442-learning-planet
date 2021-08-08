@@ -71,27 +71,24 @@ h2 {
     cursor: default;
 }
 button{
-    font-size: 1.7em;
-    position: relative;
-    display: inline-block;
-    padding: 25px 36px 25px 36px;
-    margin: 10px 0;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    border-radius: 40px;
-    border-width: 0em;
-    background: linear-gradient(90deg, #755bea, #ff72c0);
-    // filter: drop-shadow(0 0 1em #755bea);
-    //box-shadow: 5px 6px rgb(48, 42, 75);
+  font-size: 1.7em;
+  position: relative;
+  display: inline-block;
+  padding: 25px 36px 25px 36px;
+  margin: 10px 0;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.3em;
+  border-radius: 40px;
+  border-width: 0em;
+  background: linear-gradient(90deg, #755bea, #ff72c0);
 }
 button:hover{
-    background: linear-gradient(90deg, tomato, #ffd13a);
-    filter: drop-shadow(0 0 1.5em #755bea);
-    color: #ffffff;
-    border-color: #ffffff;
-    transition: 0.5s;
+  background: linear-gradient(90deg, tomato, gold);
+  filter: drop-shadow(0 0 1.5em #755bea);
+  color: #ffffff;
+  border-color: #ffffff;
+  transition: 0.5s;
 }
 .mode{
     padding: 0 15em 0 15em;
