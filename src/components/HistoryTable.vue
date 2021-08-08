@@ -77,7 +77,7 @@ export default {
   border-radius: 15px;
   border-color: gold;
   padding: 1.5em 0em 1.5em 0em;
-  margin: 0em 12em 0em 12em;
+  margin: 0em 10em 0em 10em;
 }
 h1 {
   color: gold;
@@ -88,6 +88,8 @@ h1 {
   font-size: 3em;
 }
 th, td {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
   text-align: center;
   padding: 8px;
 }

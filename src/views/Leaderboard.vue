@@ -36,9 +36,8 @@ export default {
 
 <style lang="scss" scoped>
 .leader{
-  font-family: "PressStart2PRegular";
-  font-weight: normal;
-  font-style: normal;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
   min-height: 100vh;
   width: 100vw;
   overflow-x: hidden;

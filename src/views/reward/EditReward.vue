@@ -46,10 +46,9 @@ export default {
 
 <style lang="scss" scoped>
 .editR{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
   color:black;
-  font-family: 'Prompt';
-  font-weight: normal;
-  font-style: normal;
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;

@@ -58,18 +58,18 @@ export default {
 
 <style lang="scss" scoped>
 .textcenter{
-    color: black;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-style: solid;
-    border-width: 0.3em;
-    border-radius: 15px;
-    border-color: tomato;
-    padding: 0.5em 2em 0.5em 2em;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-style: solid;
+  border-width: 0.3em;
+  border-radius: 15px;
+  border-color: tomato;
+  padding: 0.5em 2em 0.5em 2em;
 
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 th{
     color: tomato;
@@ -83,6 +83,8 @@ th, td {
   padding: 8px;
 }
 button{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
   font-size: 1em;
   padding: 0.5em 1em 0.4em 1em;
   border-radius: 30px;

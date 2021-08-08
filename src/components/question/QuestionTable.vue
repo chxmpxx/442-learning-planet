@@ -198,6 +198,8 @@ export default {
     padding-left: 5em;
 }
 button{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
     font-size: 1em;
     padding: 0 0.4em 0 0.4em;
     margin-top: 1em;
@@ -230,12 +232,14 @@ button:hover{
     color:gold;
 }
 h1{
-  margin-top: 0em;
-  color: #ffffff;
-  font-size: 4em;
-  text-shadow: 0 0 20px #fff;
-  animation: pulse 2s ease-in infinite;
-  cursor: default;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    margin-top: 0em;
+    color: #ffffff;
+    font-size: 4em;
+    text-shadow: 0 0 20px #fff;
+    animation: pulse 2s ease-in infinite;
+    cursor: default;
 }
 h2{
     font-size: 2em;

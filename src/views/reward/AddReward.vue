@@ -37,9 +37,8 @@ export default {
 <style lang="scss" scoped>
 .addR{
   color:black;
-  font-family: 'Prompt';
-  font-weight: normal;
-  font-style: normal;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;

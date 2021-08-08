@@ -293,9 +293,8 @@ export default {
 
 .subtopic,
 .sub {
-  font-family: "PressStart2PRegular";
-  font-weight: normal;
-  font-style: normal;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
   font-size: 1.25em;
 }
 ////////////////////////////////////

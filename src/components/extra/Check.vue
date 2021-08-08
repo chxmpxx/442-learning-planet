@@ -145,6 +145,8 @@ h2{
     padding-left: 5em;
 }
 button{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
     font-size: 1em;
     padding: 0 0.4em 0 0.4em;
     margin-top: 0.5em;
