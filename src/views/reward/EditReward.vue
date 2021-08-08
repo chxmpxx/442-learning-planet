@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class='editR'>
         <NavBar/>
         <edit-reward :id="this.id" :index="this.index" />
     </div>
@@ -44,6 +44,19 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.editR{
+  color:black;
+  font-family: 'Prompt';
+  font-weight: normal;
+  font-style: normal;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)),
+    url("../../assets/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 </style>

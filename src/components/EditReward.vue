@@ -1,31 +1,44 @@
 <template>
     <div >
-        <div style="padding-top: 100px">
-            <label for="name">Name:</label>
-            <input type="text" v-model='reward.name'>
-        </div>
-        <div>
-            <label for="point">Point:</label>
-            <input type="number" v-model="reward.point">
-        </div>
-        <div>
-            <label for="stock">Stock: </label>
-            <input type="number" v-model="reward.amount">
-        </div>
-        <div>
-            <label for="type">Upload image :</label>
-            <input type="file" @change="handleChange" style="padding-left:630px"/>
+        <br /><br /><br /><br /><br /><br />
+        <h1>Edit Reward</h1>
+        <br /><br />
+
+        <div class="addform">
             <div>
-                <img :src="getApi()+reward.image.url" id="img-preview">
+                <label for="name">&nbsp;&nbsp;Name : &nbsp;&nbsp;</label>
+                <input type="text" v-model='reward.name' style="width: 1000px">
+            </div>
+            <div>
+                <label for="point">&nbsp;&nbsp;&nbsp;Point : &nbsp;&nbsp;</label>
+                <input type="number" v-model="reward.point" style="width: 416px">
+
+                <label for="stock">Stock : &nbsp;</label>
+                <input type="number" v-model="reward.amount" style="width: 416px">
+            </div>
+
+            <br /><br /><br />
+            <div class="infobottom">
+                <div>
+                    <label for="type">Upload image</label>
+                    <input class='fileimage' type="file" @change="handleChange" style="padding-left:630px"/>
+                    <div>
+                        <img :src="getApi()+reward.image.url" id="img-preview">
+                    </div>
+                </div>
+
+                <div class="butbottom">
+                    <div>
+                        <button @click="edit">Edit</button>
+                        <button @click="deleteR">Delete</button>
+                    </div>
+                    <div>
+                        <button @click="back">Back</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div>
-            <button @click="edit">Edit</button>
-            <button @click="deleteR">Delete</button>
-        </div>
-        <div>
-            <button @click="back">Back</button>
-        </div>
+        
   </div>
 </template>
 
@@ -115,5 +128,58 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+h1 {
+  color: gold;
+  margin-top: -0.35em;
+  font-family: "8BITWONDERNominal";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 3em;
+}
+.addform {
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-style: solid;
+  border-width: 0.3em;
+  border-radius: 15px;
+  border-color: gold;
+  margin: 0.5em 7em 5em 7em;
+  padding: 2em 5em 2em 2em;
+}
+label {
+  font-size: 2em;
+  text-align: left;
+  margin-left: 2em;
+}
+input {
+  font-size: 2em;
+  line-height: 1.6em;
+  text-align: left;
+  margin-top: 1em;
+}
+.infobottom {
+  text-align: center;
+}
+.fileimage {
+  margin-left: -7em;
+  font-size: 1.5em;
+}
+button {
+  font-size: 1.5em;
+  border-radius: 5px;
+  border-width: 1px;
+  width: 6.4em;
+  height: 2em;
+  margin: 0.5em 1em 0.5em 0em;
+}
+button:hover {
+  background-color: tomato;
+  color: #ffffff;
+  border-color: #ffffff;
+  transition: 0.5s;
+}
+.butbottom {
+  margin-left: 4em;
+}
 </style>

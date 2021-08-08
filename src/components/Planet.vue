@@ -27,6 +27,11 @@
     <div class="textinfo" v-if="this.role !== 3">
       <h1 id="info">CHOOSE YOUR OWN ADVENTURE</h1>
     </div>
+
+    <div class="textinfo" v-if="this.role === 3">
+      <h1 id="info" style="font-size: 5em; margin-top:-1.6em; text-shadow: 0 0 70px #fff;">WELCOME ADMIN</h1>
+    </div>
+
     <img
       class="planetbg"
       src="../assets/planetbg.png"

@@ -50,7 +50,7 @@ export default {
     font-style: normal;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
     background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)),
         url("../../assets/background.jpg");
     background-size: cover;
