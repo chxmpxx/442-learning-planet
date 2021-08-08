@@ -6,7 +6,7 @@
     <div class="addform">
       <div>
         <label>&nbsp;&nbsp;Name : &nbsp;&nbsp;</label>
-        <input type="text" v-model="form.name" style="width: 1000px" />
+        <input style="width: 1000px"  type="text" v-model="form.name"/>
       </div>
       <div>
         <label>&nbsp;&nbsp;&nbsp;Point : &nbsp;&nbsp;</label>
