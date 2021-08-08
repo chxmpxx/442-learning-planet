@@ -27,6 +27,7 @@ import ST6 from "../views/question/sci/S6Table";
 import AddReward from "../views/reward/AddReward";
 import RewardAdmin from "../views/reward/RewardAdmin";
 import EditReward from "../views/reward/EditReward";
+import Logout from '../views/auth/Logout'
 
 Vue.use(VueRouter);
 
@@ -164,6 +165,11 @@ const routes = [
     name: "EditReward",
     component: EditReward,
   },
+  {
+    path: '/logout',
+    name: 'Logout',
+    component: Logout
+  }
 ];
 
 const router = new VueRouter({

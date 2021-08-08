@@ -11,6 +11,7 @@ const initialState = {
   user: auth ? auth.user : "",
   jwt: auth ? auth.jwt : "",
   isAuthen: auth ? true : false,
+  isAdmin: auth? auth.user.role.id: ''
 };
 
 export default new Vuex.Store({
@@ -20,11 +21,13 @@ export default new Vuex.Store({
       state.user = res.user;
       state.jwt = res.jwt;
       state.isAuthen = true;
+      state.isAdmin = res.user.role.id
     },
     logoutSuccess(state) {
       state.user = "";
       state.jwt = "";
       state.isAuthen = false;
+      state.isAdmin= ''
     },
     editUserData(state, res){
       state.user = res.data 
@@ -75,6 +78,7 @@ export default new Vuex.Store({
     user: (state) => state.user,
     jwt: (state) => state.jwt,
     isAuthen: (state) => state.isAuthen,
+    isAdmin: (state) => state.isAdmin
   },
   modules: {},
 });

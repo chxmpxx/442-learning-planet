@@ -67,6 +67,12 @@ export default {
       },
     };
   },
+  mounted(){
+    if(this.isAuthen()){
+      this.$swal("Restricted Area", "You have no permission", 'warning')
+      this.$router.push('/home')
+    }
+  },
   methods: {
     async login() {
       // let res = await AuthService.login(this.form);
@@ -81,6 +87,9 @@ export default {
     register() {
       return this.$router.push({ path: "/register" });
     },
+    isAuthen(){
+      return AuthUser.getters.isAuthen
+    }
   },
 };
 </script>
