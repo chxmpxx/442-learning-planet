@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>{{this.path}}&nbsp;{{this.type}}</h1>
+        <h1>แบบฝึกหัดจำนวนร้อยละ</h1>
         <br><br>
         <div>
           <table>

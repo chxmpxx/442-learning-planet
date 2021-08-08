@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h1>{{this.path}}&nbsp;{{this.type}}</h1>
-        <br><br>
+        <br><br><br>
         <div class='quiz'>
             <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{qs.question}}</h2>
             <div class="choice">

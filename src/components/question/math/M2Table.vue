@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>{{this.path}}&nbsp;{{this.type}}</h1>
+        <h1>แบบฝึกหัดเศษส่วนทศนิยม</h1>
         <br><br>
         <div>
           <table>
