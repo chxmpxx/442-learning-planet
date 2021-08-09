@@ -6,7 +6,7 @@
     <div class="addform">
       <div>
         <label>&nbsp;&nbsp;Name : &nbsp;&nbsp;</label>
-        <input style="width: 1000px"  type="text" v-model="form.name"/>
+        <input style="width: 1000px" type="text" v-model="form.name" />
       </div>
       <div>
         <label>&nbsp;&nbsp;&nbsp;Point : &nbsp;&nbsp;</label>
@@ -19,9 +19,15 @@
       <div class="infobottom">
         <div>
           <label for="type">Upload image</label>
-          <input class='fileimage' type="file" id="img" accept="image/*" @change="handleChange" />
+          <input
+            class="fileimage"
+            type="file"
+            id="img"
+            accept="image/*"
+            @change="handleChange"
+          />
           <div>
-            <img id="img-preview">
+            <img id="img-preview" />
           </div>
         </div>
         <br />
@@ -29,7 +35,12 @@
           <button
             @click="addReward"
             type="submit"
-            :disabled="form.name == '' || form.point == '' || form.amount == ''"
+            :disabled="
+              form.name == '' ||
+              form.point <= 0 ||
+              form.amount <= -1 ||
+              this.file == ''
+            "
           >
             Confirm
           </button>
@@ -70,10 +81,10 @@ export default {
   methods: {
     handleChange(event) {
       this.file = event.target.files[0];
-      if(this.file){
-        var src = URL.createObjectURL(event.target.files[0])
-        var preview = document.getElementById('img-preview')
-        preview.src = src
+      if (this.file) {
+        var src = URL.createObjectURL(event.target.files[0]);
+        var preview = document.getElementById("img-preview");
+        preview.src = src;
       }
     },
     cancel() {

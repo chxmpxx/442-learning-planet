@@ -1,107 +1,126 @@
 <template>
-    <div>
-        <h1>ADD EXTRA QUESTION</h1>
-        <br><br><br>
-        <div class='quiz'>
-            <div>
-                <label for="head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question : &nbsp;</label>
-                <input type="text" v-model="form.q" style="width: 1050px;">
-            </div>
-            <br>
-            <div class="choice" style="width: 100%">
-                <div>
-                    <label for="c1">&nbsp;&nbsp;&nbsp;Choice A : &nbsp;</label>
-                    <input type="text" v-model="form.c1" style="width: 400px;">
-                    
-                    <label for="c2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      Choice B : &nbsp;
-                    </label>
-                    <input type="text" v-model="form.c2" style="width: 400px;">
-                </div>
-                <div>
-                    <label for="c3">&nbsp;&nbsp;&nbsp;Choice C : &nbsp;</label>
-                    <input type="text" v-model="form.c3" style="width: 400px;">
-                    
-                    <label for="c4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      Choice D : &nbsp;
-                    </label>
-                    <input type="text" v-model="form.c4" style="width: 400px;">
-                </div>
- 
-            </div>
-            <br>
-            <div class='answer'>
-                <div>
-                    <label for="ans" style="">Answer : &nbsp;</label>
-                    <input type="text" v-model="form.ans" style="width: 400px;">
-                </div>
-                <div class='butbottom'>
-                    <button style="width: 130px" @click="send">SEND</button>
-                    <button style="width: 130px" @click="back">CANCEL</button>
-                </div>
-            </div>
+  <div>
+    <h1>ADD EXTRA QUESTION</h1>
+    <br /><br /><br />
+    <div class="quiz">
+      <div>
+        <label for="head"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question : &nbsp;</label
+        >
+        <input type="text" v-model="form.q" style="width: 1050px" />
+      </div>
+      <br />
+      <div class="choice" style="width: 100%">
+        <div>
+          <label for="c1">&nbsp;&nbsp;&nbsp;Choice A : &nbsp;</label>
+          <input type="text" v-model="form.c1" style="width: 400px" />
+
+          <label for="c2"
+            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Choice B : &nbsp;
+          </label>
+          <input type="text" v-model="form.c2" style="width: 400px" />
         </div>
-        
-        <div class="box">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <div>
+          <label for="c3">&nbsp;&nbsp;&nbsp;Choice C : &nbsp;</label>
+          <input type="text" v-model="form.c3" style="width: 400px" />
+
+          <label for="c4"
+            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Choice D : &nbsp;
+          </label>
+          <input type="text" v-model="form.c4" style="width: 400px" />
         </div>
+      </div>
+      <br />
+      <div class="answer">
+        <div>
+          <label for="ans" style="">Answer : &nbsp;</label>
+          <input type="text" v-model="form.ans" style="width: 400px" />
+        </div>
+        <div class="butbottom">
+          <button
+            style="width: 130px"
+            @click="send"
+            :disabled="
+              this.form.q == '' ||
+              this.form.c1 == '' ||
+              this.form.c2 == '' ||
+              this.form.c3 == '' ||
+              this.form.c4 == '' ||
+              this.form.ans == ''
+            "
+          >
+            SEND
+          </button>
+          <button style="width: 130px" @click="back">CANCEL</button>
+        </div>
+      </div>
     </div>
+
+    <div class="box">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
 </template>
 
 <script>
-import AuthUser from '../../store/AuthUser'
-import Proposation from '../../store/proposition'
+import AuthUser from "../../store/AuthUser";
+import Proposation from "../../store/proposition";
 export default {
-    data(){
-        return{
-            form:{
-                q: '',
-                c1: '',
-                c2: '',
-                c3: '',
-                c4: '',
-                ans: ''
-            }
-        }
+  data() {
+    return {
+      form: {
+        q: "",
+        c1: "",
+        c2: "",
+        c3: "",
+        c4: "",
+        ans: "",
+      },
+    };
+  },
+  methods: {
+    back() {
+      return this.$router.push({
+        name: "ExtraSelect",
+        params: { path: this.path },
+      });
     },
-    methods:{
-        back(){
-            return this.$router.push({name: "ExtraSelect", params: {path:this.path}})
-        },
-        async send(){
-            let payload = {
-                q: this.form.q,
-                c1: this.form.c1,
-                c2: this.form.c2,
-                c3: this.form.c3,
-                c4: this.form.c4,
-                ans: this.form.ans,
-                id: AuthUser.getters.user.id
-            }
-            let res = await Proposation.dispatch('addQuestion', payload)
-            if(res.success){
-                this.$swal({title: "Send Success",icon: 'success'})
-                this.$router.push({name: "ExtraSelect", params: {path: this.path}})
-            }else{
-                this.$swal('Send Failed!', res.message, 'error')
-            }
-        }
+    async send() {
+      let payload = {
+        q: this.form.q,
+        c1: this.form.c1,
+        c2: this.form.c2,
+        c3: this.form.c3,
+        c4: this.form.c4,
+        ans: this.form.ans,
+        id: AuthUser.getters.user.id,
+      };
+      let res = await Proposation.dispatch("addQuestion", payload);
+      if (res.success) {
+        this.$swal({ title: "Send Success", icon: "success" });
+        this.$router.push({ name: "ExtraSelect", params: { path: this.path } });
+      } else {
+        this.$swal("Send Failed!", res.message, "error");
+      }
     },
-    props:{
-        path: ''
-    }
-}
+  },
+  props: {
+    path: "",
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -113,8 +132,8 @@ h1 {
   font-style: normal;
   font-size: 3em;
 }
-.quiz{
-  color: #4B4B4B;
+.quiz {
+  color: #4b4b4b;
   background-color: rgba(255, 255, 255, 0.9);
   border-style: solid;
   border-width: 0.3em;
@@ -124,24 +143,24 @@ h1 {
   padding: 2em 2em 2em 2em;
   text-align: left;
 }
-.choice{
+.choice {
   padding-left: 2em;
 }
-label{
+label {
   font-size: 1.5em;
   line-height: 1.6em;
   text-align: left;
   margin-top: 1em;
 }
-input{
+input {
   font-size: 1.5em;
   line-height: 1.6em;
   text-align: left;
 }
-.answer{
+.answer {
   text-align: center;
 }
-button{
+button {
   font-size: 1.5em;
   border-radius: 5px;
   border-width: 1px;
@@ -149,7 +168,7 @@ button{
   height: 2em;
   margin: 0.5em 1em 0.5em 0em;
 }
-button:hover{
+button:hover {
   background-color: tomato;
   color: #ffffff;
   border-color: #ffffff;
