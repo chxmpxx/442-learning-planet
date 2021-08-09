@@ -146,6 +146,7 @@ export default {
   padding: 0;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
+  flex-wrap: wrap;
 }
 
 h1 {
