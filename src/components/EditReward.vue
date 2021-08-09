@@ -106,9 +106,25 @@ export default {
       this.putReward();
     },
     async deleteR() {
-      await Reward.dispatch("deleteReward", { id: this.id });
-      this.$router.push("/reward-admin");
-      this.$swal({ title: "Delete Success", icon: "success" });
+      this.$swal({
+        title: 'Are you sure to delete?',
+        icon: 'warning',
+        showCancelButton: true,
+        showConfirmButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        confirmButtonColor: 'green',
+        cancelButtonColor: 'red'
+
+      }).then(async (result) =>{
+        if(result.isConfirmed){
+          await Reward.dispatch("deleteReward", { id: this.id });
+          this.$router.push("/reward-admin");
+          this.$swal({ title: "Delete Success", icon: "success" });
+        }else{
+          this.$swal({title: 'Cancel', icon: 'error'})
+        }
+      })
     },
     async putReward() {
       if (this.file) {
@@ -193,5 +209,11 @@ button:hover {
 }
 .butbottom {
   margin-left: 4em;
+}
+img{
+  width: 250px;
+  height: 250px;
+  margin: 0.5rem;
+  filter: drop-shadow(0 0 0.5em rgb(255, 255, 255));
 }
 </style>

@@ -181,7 +181,12 @@ button:hover {
 .butbottom {
   margin-left: 4em;
 }
-
+img{
+  width: 250px;
+  height: 250px;
+  margin: 0.5rem;
+  filter: drop-shadow(0 0 0.5em rgb(255, 255, 255));
+}
 // ------------------Block Rotation--------------------
 .box div {
   height: 6px;

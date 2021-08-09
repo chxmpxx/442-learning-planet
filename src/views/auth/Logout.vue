@@ -9,6 +9,7 @@ export default {
       this.$router.push('/')
     }
     AuthUser.dispatch("logout");
+    this.$swal({title: "Logout Success!", icon: 'success'})
     this.$router.push("/");
   },
   methods:{
