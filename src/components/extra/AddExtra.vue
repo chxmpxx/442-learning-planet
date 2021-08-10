@@ -42,14 +42,6 @@
           <button
             style="width: 130px"
             @click="send"
-            :disabled="
-              this.form.q == '' ||
-              this.form.c1 == '' ||
-              this.form.c2 == '' ||
-              this.form.c3 == '' ||
-              this.form.c4 == '' ||
-              this.form.ans == ''
-            "
           >
             SEND
           </button>
@@ -99,22 +91,29 @@ export default {
       });
     },
     async send() {
-      let payload = {
-        q: this.form.q,
-        c1: this.form.c1,
-        c2: this.form.c2,
-        c3: this.form.c3,
-        c4: this.form.c4,
-        ans: this.form.ans,
-        id: AuthUser.getters.user.id,
-      };
-      let res = await Proposation.dispatch("addQuestion", payload);
-      if (res.success) {
-        this.$swal({ title: "Send Success", icon: "success" });
-        this.$router.push({ name: "ExtraSelect", params: { path: this.path } });
-      } else {
-        this.$swal("Send Failed!", res.message, "error");
+      if(this.form.q == '' || this.form.c1 == '' || this.form.c2 == '' || this.form.c3 == '' || this.form.c4 == '' || this.form.ans == ''){
+        this.$swal("Add Question Failed", "Please complete your form.", "error");
       }
+      else{
+        let payload = {
+          q: this.form.q,
+          c1: this.form.c1,
+          c2: this.form.c2,
+          c3: this.form.c3,
+          c4: this.form.c4,
+          ans: this.form.ans,
+          id: AuthUser.getters.user.id,
+        };
+        
+        let res = await Proposation.dispatch("addQuestion", payload);
+        if (res.success) {
+          this.$swal({ title: "Send Success", icon: "success" });
+          this.$router.push({ name: "ExtraSelect", params: { path: this.path } });
+        } else {
+          this.$swal("Send Failed!", res.message, "error");
+        } 
+      }
+      
     },
   },
   props: {

@@ -35,12 +35,6 @@
           <button
             @click="addReward"
             type="submit"
-            :disabled="
-              form.name == '' ||
-              form.point <= 0 ||
-              form.amount <= -1 ||
-              this.file == ''
-            "
           >
             Confirm
           </button>
@@ -106,10 +100,25 @@ export default {
       // );
     },
     async addReward() {
-      if (this.file) {
-        await this.uploadImage();
+      if(this.form.name === ''){
+        this.$swal("Add Reward Failed", "Please enter your reward name.", "error");
       }
-      this.postReward();
+      else if(this.form.point <= 0){
+        this.$swal("Add Reward Failed", "Your reward point must more than 0.", "error");
+      }
+      else if(this.form.amount <= 0){
+        this.$swal("Add Reward Failed", "Your reward amount must more than 0.", "error");
+      }
+      else if(this.file == ''){
+        this.$swal("Add Reward Failed", "Please enter your reward image.", "error");
+      }
+      else{
+        if (this.file) {
+          await this.uploadImage();
+        }
+        this.postReward();
+      }
+      
     },
     async postReward() {
       let payload = {

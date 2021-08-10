@@ -44,7 +44,6 @@
             @click="login"
             class="login-btn"
             type="submit"
-            :disabled="form.password.length < 3 || form.username == ''"
           >
             Log in
           </button>
@@ -75,21 +74,32 @@ export default {
   },
   methods: {
     async login() {
+    if(this.form.password.length < 3 && this.form.username == ''){
+      this.$swal("Login Failed", "Please complete your form.", 'error')
+    }
+    else if(this.form.username == '' && !this.form.password.length < 3){
+      this.$swal("Login Failed", "Please enter your username.", 'error')
+    }else if(this.form.password.length < 3 && !this.form.username == ''){
+      this.$swal("Login Failed", "Please enter your password.", 'error')
+    }else{
       // let res = await AuthService.login(this.form);
-      let res = await AuthUser.dispatch("login", this.form);
-      if (res.success) {
-        this.$swal("Login Success", `Welcome, ${res.user.username}`, "success");
-        this.$router.push("/home");
-      } else {
-        this.$swal("Login Failed", res.message, "error");
-      }
-    },
+        let res = await AuthUser.dispatch("login", this.form);
+        if (res.success) {
+          this.$swal("Login Success", `Welcome, ${res.user.username}`, "success");
+          this.$router.push("/home");
+        } else {
+          this.$swal("Login Failed", res.message, "error");
+        }
+    }
+  },
     register() {
       return this.$router.push({ path: "/register" });
     },
     isAuthen(){
       return AuthUser.getters.isAuthen
     }
+
+      
   },
 };
 </script>

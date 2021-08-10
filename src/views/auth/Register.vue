@@ -33,13 +33,6 @@
             @click="register"
             type="submit"
             class="register-btn"
-            :disabled="
-              form.password.length < 6 ||
-                confirm_password.length < 6 ||
-                form.password !== confirm_password ||
-                form.username == '' ||
-                form.email == ''
-            "
           >
             Register
           </button>
@@ -70,17 +63,26 @@ export default {
   methods: {
     async register() {
       // let res = await AuthService.register(this.form);
-      let res = await AuthUser.dispatch("register", this.form);
-      if (res.success) {
-        this.$swal(
-          "Register Success",
-          `Welcome ${res.user.username}`,
-          "success"
-        );
-        this.$router.push({ path: "/home" });
-      } else {
-        this.$swal("Register Failed", res.message, "error");
+      if(this.form.password.length < 3 || this.confirm_password.length < 3 || this.form.username == '' || this.form.email == ''){
+        this.$swal("Register Failed", "Please complete your form.", "error");
       }
+      else if(this.form.password !== this.confirm_password){
+        this.$swal("Register Failed", "Your password and confirmation password do not match.", "error");
+      }
+      else{
+        let res = await AuthUser.dispatch("register", this.form);
+        if (res.success) {
+          this.$swal(
+            "Register Success",
+            `Welcome ${res.user.username}`,
+            "success"
+          );
+          this.$router.push({ path: "/home" });
+        } else {
+          this.$swal("Register Failed", res.message, "error");
+        }
+      }
+      
     },
     cancel() {
       return this.$router.push({ path: "/" });

@@ -26,7 +26,7 @@
         <input type="number" v-model="q.points" />
       </div>
       <div>
-        <button class="but" @click="approve" :disabled="this.q.points <= 0">
+        <button class="but" @click="approve">
           Approve
         </button>
         <button class="but" @click="disApprove">Disapprove</button>
@@ -92,14 +92,17 @@ export default {
       this.$swal({ title: "This question is disapprove", icon: "error" });
     },
     async approve() {
-      let payload = {
-        heading: this.q.heading,
-        c1: this.q.c1,
-        c2: this.q.c2,
-        c3: this.q.c3,
-        c4: this.q.c4,
-        ans: this.q.ans,
-        points: this.q.points,
+      if(this.q.points <= 0){
+        this.$swal("Approve Failed", "Your question point must more than 0.", "error");
+      }else{
+        let payload = {
+          heading: this.q.heading,
+          c1: this.q.c1,
+          c2: this.q.c2,
+          c3: this.q.c3,
+          c4: this.q.c4,
+          ans: this.q.ans,
+          points: this.q.points,
       };
       await Extra.dispatch("addExtra", payload);
       let date = moment().toISOString();
@@ -114,7 +117,9 @@ export default {
       await Question.dispatch("deleteQuestion", { id: this.id });
       this.$router.push("/wait");
       this.$swal({ title: "This question is approve", icon: "success" });
+      }
     },
+
   },
 };
 </script>

@@ -36,11 +36,6 @@
           <div>
             <button
               @click="edit"
-              :disabled="
-                this.reward.name == '' ||
-                this.reward.point <= 0 ||
-                this.reward.amount <= -1
-              "
             >
               Edit
             </button>
@@ -100,10 +95,22 @@ export default {
       this.response = await UploadImage.uploadImage(data);
     },
     async edit() {
-      if (this.file) {
-        await this.uploadImage();
+      if(this.reward.name === ''){
+        this.$swal("Add Reward Failed", "Please enter your reward name.", "error");
       }
-      this.putReward();
+      else if(this.reward.point <= 0){
+        this.$swal("Add Reward Failed", "Your reward point must more than 0.", "error");
+      }
+      else if(this.reward.amount <= 0){
+        this.$swal("Add Reward Failed", "Your reward amount must more than 0.", "error");
+      }
+      else{
+        if (this.file) {
+          await this.uploadImage();
+        }
+        this.putReward();
+      }
+      
     },
     async deleteR() {
       this.$swal({
