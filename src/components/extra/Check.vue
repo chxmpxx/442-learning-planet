@@ -1,34 +1,42 @@
 <template>
   <div class="quiz">
-    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;โจทย์ : {{ q.heading }}</h1>
+    <h1>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;โจทย์ :
+      <input type="text" v-model="q.heading" style="width: 700px" />
+    </h1>
     <div class="choice">
       <div>
         <button>A</button>
-        <span>&nbsp;&nbsp; {{ q.c1 }}</span>
+        &nbsp;&nbsp;<input type="text" v-model="q.c1" style="width: 700px" />
       </div>
       <div>
         <button>B</button>
-        <span>&nbsp;&nbsp; {{ q.c2 }}</span>
+        &nbsp;&nbsp;<input type="text" v-model="q.c2" style="width: 700px" />
       </div>
       <div>
         <button>C</button>
-        <span>&nbsp;&nbsp; {{ q.c3 }}</span>
+        &nbsp;&nbsp;<input type="text" v-model="q.c3" style="width: 700px" />
       </div>
       <div>
         <button>D</button>
-        <span>&nbsp;&nbsp; {{ q.c4 }}</span>
+        &nbsp;&nbsp;<input type="text" v-model="q.c4" style="width: 700px" />
       </div>
     </div>
-    <h2>เฉลย : {{ this.q.ans }}</h2>
+    <h2>เฉลย : <input type="text" v-model="q.ans" style="width: 600px" /></h2>
     <div class="check">
       <div>
-        <label for="point">&nbsp;&nbsp;&nbsp;Point : &nbsp;</label>
-        <input type="number" v-model="q.points" />
+        <label for="point">&nbsp;&nbsp;&nbsp;Question Point : &nbsp;</label>
+        <input type="number" v-model="q.points" style="text-align: center" />
+        <br />
+        <label for="point">&nbsp;&nbsp;&nbsp;Reward Point : &nbsp;</label>
+        <input
+          type="number"
+          v-model="q.reward_points"
+          style="text-align: center"
+        />
       </div>
       <div>
-        <button class="but" @click="approve">
-          Approve
-        </button>
+        <button class="but" @click="approve">Approve</button>
         <button class="but" @click="disApprove">Disapprove</button>
       </div>
     </div>
@@ -71,6 +79,7 @@ export default {
         c4: "",
         ans: "",
         points: 0,
+        reward_points: 0,
         user: "",
       },
     };
@@ -92,9 +101,20 @@ export default {
       this.$swal({ title: "This question is disapprove", icon: "error" });
     },
     async approve() {
-      if(this.q.points <= 0){
-        this.$swal("Approve Failed", "Your question point must more than 0.", "error");
-      }else{
+      if (this.q.points <= 0) {
+        this.$swal(
+          "Approve Failed",
+          "Your question point must more than 0.",
+          "error"
+        );
+      }
+      if (this.q.reward_points <= 0) {
+        this.$swal(
+          "Approve Failed",
+          "Your reward point must more than 0.",
+          "error"
+        );
+      } else {
         let payload = {
           heading: this.q.heading,
           c1: this.q.c1,
@@ -103,23 +123,22 @@ export default {
           c4: this.q.c4,
           ans: this.q.ans,
           points: this.q.points,
-      };
-      await Extra.dispatch("addExtra", payload);
-      let date = moment().toISOString();
-      let payload1 = {
-        date: moment(date).format("YYYY-MM-DD"),
-        heading: "Add Question",
-        point: this.q.points,
-        type: "get",
-        id: this.q.user,
-      };
-      await History.dispatch("addHistory", payload1);
-      await Question.dispatch("deleteQuestion", { id: this.id });
-      this.$router.push("/wait");
-      this.$swal({ title: "This question is approve", icon: "success" });
+        };
+        await Extra.dispatch("addExtra", payload);
+        let date = moment().toISOString();
+        let payload1 = {
+          date: moment(date).format("YYYY-MM-DD"),
+          heading: "Add Question",
+          point: this.q.reward_points,
+          type: "get",
+          id: this.q.user,
+        };
+        await History.dispatch("addHistory", payload1);
+        await Question.dispatch("deleteQuestion", { id: this.id });
+        this.$router.push("/wait");
+        this.$swal({ title: "This question is approve", icon: "success" });
       }
     },
-
   },
 };
 </script>
@@ -175,8 +194,8 @@ label {
   color: tomato;
 }
 input {
-  width: 8em;
-  text-align: center;
+  width: 7em;
+  // text-align: center;
 }
 .but {
   border-radius: 5px;
