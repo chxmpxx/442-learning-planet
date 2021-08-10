@@ -25,6 +25,7 @@ import ST4 from "../views/question/sci/S4Table";
 import ST5 from "../views/question/sci/S5Table";
 import ST6 from "../views/question/sci/S6Table";
 import AddReward from "../views/reward/AddReward";
+import BuyHistory from "../views/reward/BuyHistory";
 import RewardAdmin from "../views/reward/RewardAdmin";
 import EditReward from "../views/reward/EditReward";
 import Logout from '../views/auth/Logout'
@@ -154,6 +155,11 @@ const routes = [
     path: "/add-reward",
     name: "AddReward",
     component: AddReward,
+  },
+  {
+    path: "/buy-history",
+    name: "BuyHistory",
+    component: BuyHistory,
   },
   {
     path: "/reward-admin",

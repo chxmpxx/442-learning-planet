@@ -5,6 +5,9 @@
       <button class="addReward btn" @click="click('/add-reward')">
         Add reward
       </button>
+      <button class="buyHistory btn" @click="click('/buy-history')">
+        Buy history
+      </button>
     </div>
     
     <div class="show-reward">
@@ -122,6 +125,8 @@ export default {
   display: inline-block;
   padding: 15px 40px 15px 40px;
   margin: 10px 0;
+  margin-left: 1.5em;
+  margin-right: 1em;
   color: #fff;
   text-decoration: none;
   letter-spacing: 0.3em;

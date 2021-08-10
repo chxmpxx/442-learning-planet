@@ -24,8 +24,10 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchHistory({ commit }) {
-      let res = await axios.get(api_endpoint + "/histories");
+      let headers = AuthService.getApiHeader();
+      let res = await axios.get(api_endpoint + "/histories", headers)
       commit("fetch", { res });
+      return res.data
     },
     async addHistory({ commit }, payload1) {
       let url = `${api_endpoint}/histories`;
