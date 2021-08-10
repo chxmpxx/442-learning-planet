@@ -101,14 +101,17 @@ export default {
       this.$swal({ title: "This question is disapprove", icon: "error" });
     },
     async approve() {
-      if (this.q.points <= 0) {
+      if(this.q.heading == '' || this.q.c1 == '' || this.q.c2 == '' || this.q.c3 == '' || this.q.c4 == '' || this.q.ans == ''){
+        this.$swal("Add Question Failed", "Please complete your form.", "error");
+      }
+      else if (this.q.points <= 0) {
         this.$swal(
           "Approve Failed",
           "Your question point must more than 0.",
           "error"
         );
       }
-      if (this.q.reward_points <= 0) {
+      else if (this.q.reward_points <= 0) {
         this.$swal(
           "Approve Failed",
           "Your reward point must more than 0.",
