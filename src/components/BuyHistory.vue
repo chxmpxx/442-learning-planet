@@ -1,31 +1,31 @@
 <template>
   <div>
-  <h1>Buy History</h1>
-  <br><br>
+    <h1>Buy History</h1>
+    <br /><br />
 
-        <table>
-            <div class='buyhistorytable'>
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Date</th>
-                        <th>Name</th>
-                        <th>Detail</th>
-                        <th>Point</th>
-                    </tr>
-                </thead>
-                
-                <tbody>
-                    <tr v-for="(item, index) in use" :key="index">
-                        <td>{{ index + 1 }}</td>
-                        <td>{{ item.date }}</td>
-                        <td>{{ item.user.username }}</td>
-                        <td>{{ item.heading }}</td>
-                        <td>{{ item.point }}</td>
-                    </tr>
-                </tbody> 
-            </div>
-        </table>
+    <table>
+      <div class="buyhistorytable">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Detail</th>
+            <th>Point</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr v-for="(item, index) in use" :key="index">
+            <td>{{ index + 1 }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.user.username }}</td>
+            <td>{{ item.heading }}</td>
+            <td>{{ item.point }}</td>
+          </tr>
+        </tbody>
+      </div>
+    </table>
 
     <div class="box">
       <div></div>
@@ -45,12 +45,12 @@
 </template>
 
 <script>
-import HistoryTable from '../store/HistoryApi'
+import HistoryTable from "../store/HistoryApi";
 export default {
   data() {
     return {
-        buyhistory: [],
-        use: [],
+      buyhistory: [],
+      use: [],
     };
   },
   async created() {
@@ -58,20 +58,20 @@ export default {
   },
   methods: {
     async fetchHistory() {
-        this.buyhistory = await HistoryTable.dispatch("fetchHistory");
-        console.log(this.buyhistory);
-        this.buyhistory.forEach(buy => {
-            if(buy.type ==='use'){
-                this.use.push(buy)
-            }
-        })
+      this.buyhistory = await HistoryTable.dispatch("fetchHistory");
+
+      this.buyhistory.forEach((buy) => {
+        if (buy.type === "use") {
+          this.use.push(buy);
+        }
+      });
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.buyhistorytable{
+.buyhistorytable {
   color: black;
   background-color: rgba(255, 255, 255, 0.9);
   border-style: solid;
@@ -89,17 +89,18 @@ h1 {
   font-style: normal;
   font-size: 3em;
 }
-th, td {
+th,
+td {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   text-align: center;
   padding: 8px;
 }
-th{
+th {
   font-size: 24px;
   padding: 0.5em 4em 0.5em 4em;
 }
-td{
+td {
   font-size: 20px;
 }
 
