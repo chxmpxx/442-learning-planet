@@ -2,33 +2,34 @@
   <div class="quiz">
     <h1>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;โจทย์ :
-      <input type="text" v-model="q.heading" style="width: 700px" />
+      <input type="text" v-model="q.heading" style="width: 1050px" />
     </h1>
     <div class="choice">
       <div>
         <button>A</button>
-        &nbsp;&nbsp;<input type="text" v-model="q.c1" style="width: 700px" />
+        &nbsp;&nbsp;&nbsp;<input type="text" v-model="q.c1" style="width: 900px" />
       </div>
       <div>
         <button>B</button>
-        &nbsp;&nbsp;<input type="text" v-model="q.c2" style="width: 700px" />
+        &nbsp;&nbsp;&nbsp;<input type="text" v-model="q.c2" style="width: 900px" />
       </div>
       <div>
         <button>C</button>
-        &nbsp;&nbsp;<input type="text" v-model="q.c3" style="width: 700px" />
+        &nbsp;&nbsp;&nbsp;<input type="text" v-model="q.c3" style="width: 900px" />
       </div>
       <div>
         <button>D</button>
-        &nbsp;&nbsp;<input type="text" v-model="q.c4" style="width: 700px" />
+        &nbsp;&nbsp;&nbsp;<input type="text" v-model="q.c4" style="width: 900px" />
       </div>
     </div>
-    <h2>เฉลย : <input type="text" v-model="q.ans" style="width: 600px" /></h2>
+    <h2>เฉลย : &nbsp;<input type="text" v-model="q.ans" style="width: 900px" /></h2>
+    <br>
     <div class="check">
       <div>
         <label for="point">&nbsp;&nbsp;&nbsp;Question Point : &nbsp;</label>
         <input type="number" v-model="q.points" style="text-align: center" />
         <br />
-        <label for="point">&nbsp;&nbsp;&nbsp;Reward Point : &nbsp;</label>
+        <label for="point">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reward Point : &nbsp;</label>
         <input
           type="number"
           v-model="q.reward_points"
@@ -205,7 +206,7 @@ input {
   border-width: 1px;
   width: 6.4em;
   height: 2em;
-  margin: 0.5em 1em 0.5em 0em;
+  margin: 0.5em 1em 0.5em 1.3em;
 }
 
 // ------------------Block Rotation--------------------
