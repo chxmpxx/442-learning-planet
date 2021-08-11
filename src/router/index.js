@@ -28,7 +28,7 @@ import AddReward from "../views/reward/AddReward";
 import BuyHistory from "../views/reward/BuyHistory";
 import RewardAdmin from "../views/reward/RewardAdmin";
 import EditReward from "../views/reward/EditReward";
-import Logout from '../views/auth/Logout'
+import Logout from "../views/auth/Logout";
 
 Vue.use(VueRouter);
 
@@ -172,10 +172,10 @@ const routes = [
     component: EditReward,
   },
   {
-    path: '/logout',
-    name: 'Logout',
-    component: Logout
-  }
+    path: "/logout",
+    name: "Logout",
+    component: Logout,
+  },
 ];
 
 const router = new VueRouter({

@@ -1,5 +1,7 @@
 # Learning planet
 
+git clone https://github.com/chxmpxx/442-learning-planet.git
+
 ## Project setup
 
 ```
@@ -10,6 +12,12 @@ npm install
 
 ```
 npm run serve
+```
+
+### สร้างไฟล์ .env
+
+```
+cp .env.example .env
 ```
 
 ## How to use

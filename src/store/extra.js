@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import AuthService from '../services/AuthService'
 
-let api_endpoint = process.env.VUE_APP_USER_ENDPOINT || "http://localhost:3003"
+let api_endpoint = process.env.VUE_APP_USER_ENDPOINT || "http://localhost:1337"
 
 Vue.use(Vuex)
 

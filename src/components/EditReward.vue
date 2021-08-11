@@ -54,7 +54,7 @@
 import Reward from "../store/RewardApi";
 import RewardService from "../services/RewardService";
 import UploadImage from "../services/UploadService";
-let api_endpoint = process.env.VUE_APP_USER_ENDPOINT;
+let api_endpoint = process.env.VUE_APP_USER_ENDPOINT || "http://localhost:1337";
 export default {
   props: {
     id: "",

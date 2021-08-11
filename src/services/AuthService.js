@@ -4,8 +4,7 @@ const auth_key = "auth-user";
 let auth = JSON.parse(localStorage.getItem(auth_key));
 const user = auth ? auth.user : "";
 const jwt = auth ? auth.jwt : "";
-const api_endpoint =
-  process.env.VUE_APP_USER_ENDPOINT || "http://localhost:1337";
+const api_endpoint = process.env.VUE_APP_USER_ENDPOINT;
 
 export default {
   isAuthen() {
@@ -80,7 +79,7 @@ export default {
         // console.error(e.response.data.message[0].message[0].message);
         return {
           success: false,
-          message: e.response.data.message[0].messages[0].message
+          message: e.response.data.message[0].messages[0].message,
         };
       } else {
         return {
@@ -93,55 +92,55 @@ export default {
   logout() {
     localStorage.removeItem(auth_key);
   },
-  async doMQuiz(payload){
-    let url = `${api_endpoint}/users/${payload.id}`
+  async doMQuiz(payload) {
+    let url = `${api_endpoint}/users/${payload.id}`;
     let body = {
-      "maths" : payload.maths
-    }
-    let headers = this.getApiHeader()
-    let res = await axios.put(url, body, headers)
-    if(res.status===200){
+      maths: payload.maths,
+    };
+    let headers = this.getApiHeader();
+    let res = await axios.put(url, body, headers);
+    if (res.status === 200) {
       return {
         data: res.data,
-        success: true
-      }
+        success: true,
+      };
     }
     return {
-      success: false
-    }
+      success: false,
+    };
   },
-  async doSQuiz(payload){
-    let url = `${api_endpoint}/users/${payload.id}`
+  async doSQuiz(payload) {
+    let url = `${api_endpoint}/users/${payload.id}`;
     let body = {
-      "scis" : payload.scis
-    }
-    let headers = this.getApiHeader()
-    let res = await axios.put(url, body, headers)
-    if(res.status===200){
+      scis: payload.scis,
+    };
+    let headers = this.getApiHeader();
+    let res = await axios.put(url, body, headers);
+    if (res.status === 200) {
       return {
         data: res.data,
-        success: true
-      }
+        success: true,
+      };
     }
     return {
-      success: false
-    }
+      success: false,
+    };
   },
-  async doXQuiz(payload){
-    let url = `${api_endpoint}/users/${payload.id}`
+  async doXQuiz(payload) {
+    let url = `${api_endpoint}/users/${payload.id}`;
     let body = {
-      "extras" : payload.extras
-    }
-    let headers = this.getApiHeader()
-    let res = await axios.put(url, body, headers)
-    if(res.status===200){
+      extras: payload.extras,
+    };
+    let headers = this.getApiHeader();
+    let res = await axios.put(url, body, headers);
+    if (res.status === 200) {
       return {
         data: res.data,
-        success: true
-      }
+        success: true,
+      };
     }
     return {
-      success: false
-    }
-  }
+      success: false,
+    };
+  },
 };

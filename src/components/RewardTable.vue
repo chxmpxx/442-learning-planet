@@ -74,10 +74,7 @@ export default {
       this.point = this.a.histories;
       this.calpoint();
     },
-    async fetchReward() {
-      await RewardApiStore.dispatch("fetchReward");
-      this.rewards = RewardApiStore.getters.rewards;
-    },
+
     calPoint() {
       let get = 0;
       let use = 0;
@@ -92,17 +89,16 @@ export default {
     },
     async exchange(reward, index) {
       this.$swal({
-        title: 'Are you sure to exchange?',
-        icon: 'warning',
+        title: "Are you sure to exchange?",
+        icon: "warning",
         showCancelButton: true,
         showConfirmButton: true,
-        confirmButtonText: 'Yes, exchange it!',
-        cancelButtonText: 'No, cancel!',
-        confirmButtonColor: 'green',
-        cancelButtonColor: 'red'
-
-      }).then(async (result) =>{
-        if(result.isConfirmed){
+        confirmButtonText: "Yes, exchange it!",
+        cancelButtonText: "No, cancel!",
+        confirmButtonColor: "green",
+        cancelButtonColor: "red",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
           if (reward.amount > 0) {
             if (this.current_point >= reward.point) {
               let date = moment().toISOString();
@@ -124,17 +120,21 @@ export default {
               this.id = await AuthUser.getters.user.id;
               this.user = await Member.dispatch("searchMe", { id: this.id });
               this.calPoint();
-              this.$swal("Exchange Success", `You got ${reward.name}`, "success");
+              this.$swal(
+                "Exchange Success",
+                `You got ${reward.name}`,
+                "success"
+              );
             } else {
               this.$swal("Exchange Failed", "Not enough points", "error");
             }
           } else {
             this.$swal("Exchange Failed", "Out of stock", "error");
           }
-        }else{
-          this.$swal({title: 'Cancel', icon: 'error'})
+        } else {
+          this.$swal({ title: "Cancel", icon: "error" });
         }
-      })
+      });
     },
   },
 };

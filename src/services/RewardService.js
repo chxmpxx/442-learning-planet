@@ -1,7 +1,7 @@
 import axios from "axios";
 import AuthService from "./AuthService";
 
-const api_endpoint = process.env.VUE_APP_USER_ENDPOINT || 'http://localhost:3003'
+const api_endpoint = process.env.VUE_APP_USER_ENDPOINT || 'http://localhost:1337'
 
 export default{
     async getRewardById(id){
